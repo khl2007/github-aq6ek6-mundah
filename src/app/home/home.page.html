@@ -26,12 +26,13 @@
 <ion-card *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]" >
   <ion-card-header>
     <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    <ion-card-title>Card Title</ion-card-title>
+    <ion-card-title> {{item.payload.doc.data().title}} </ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    Keep close to Nature's heart... and break clear away, once in awhile,
-    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+
+<img [src]="item.payload.doc.data().image">
+
   </ion-card-content>
 </ion-card>
 
