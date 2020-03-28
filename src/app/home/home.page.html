@@ -21,7 +21,7 @@
       </ion-item>
     </ion-list>
 </div>
- <div *ngIf="items.length > 0" class="list-mini">
+ <div *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]" >
 
 <ion-card>
   <ion-card-header>
