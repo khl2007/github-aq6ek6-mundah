@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase : {
-     apiKey: "AIzaSyC1Y6bO-PkA6p-dq7xJlCeY52ga3tt4C8A",
-    authDomain: "trainionic-e1cca.firebaseapp.com",
-    databaseURL: "https://trainionic-e1cca.firebaseio.com",
-    projectId: "trainionic-e1cca",
-    storageBucket: "trainionic-e1cca.appspot.com",
-    messagingSenderId: "901522075070",
-    appId: "1:901522075070:web:dac5e28ae21603d2a41def"
-  }
+     apiKey: "AIzaSyB7oeot6pREZYKHA_zo18WQnBPSEIw6ZgM",
+  authDomain: "khlstacksocial.firebaseapp.com",
+  databaseURL: "https://khlstacksocial.firebaseio.com",
+  projectId: "khlstacksocial",
+  storageBucket: "khlstacksocial.appspot.com",
+  messagingSenderId: "351180360715",
+  appId: "1:351180360715:web:9d43235653b013e16ccb0e"
+}
 };
 
 /*
