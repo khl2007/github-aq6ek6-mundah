@@ -32,6 +32,8 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
   }
 getBlogs(){
 
+this.blogitemRef = db.collection('/blogs');
+
 }
   getTask(taskId){
     return new Promise<any>((resolve, reject) => {
