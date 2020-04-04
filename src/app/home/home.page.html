@@ -42,7 +42,7 @@
   </div>
 </ion-content>
 
-<h1>Blogs</h1>
+<h2>Blogs</h2>
 <div *ngFor="let blog of blogs" style="width: 300px;">
   <div>
     <label>Descripe: </label> {{blog.body}}
@@ -50,9 +50,6 @@
   <div>
     <label>Age: </label> {{blog.imgurl}}
   </div>
-</div>
-<div style="margin-top:20px;">
-  <button type="button" class="button btn-danger" (click)='deleteCustomers()'>Delete All</button>
 </div>
 
 <ion-footer (click)="logout()">
