@@ -31,6 +31,7 @@ blogs: any;
     if (this.route && this.route.data) {
       this.getData();
     }
+    this.getBlogs();
   }
 
   async getData(){
