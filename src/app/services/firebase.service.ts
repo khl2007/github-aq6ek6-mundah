@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+import { Blogitem } from './blogitem';
+
 @Injectable({
   providedIn: 'root'
 })
