@@ -13,6 +13,8 @@ export class FirebaseService {
 
   private snapshotChangesSubscription: any;
 
+blogsRef: AngularFirestoreCollection<Blogitem> = null;
+
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
@@ -28,7 +30,9 @@ export class FirebaseService {
       })
     })
   }
+getBlogs(){
 
+}
   getTask(taskId){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
