@@ -45,15 +45,6 @@
 
 
 
- <!-- Story line -->
-  <ion-scroll class="story" scrollX="true">
-    <div class="story_scroll" *ngFor="let blog of blogs">
-      <div class="story_img_bg">
-      <img no-margin no-padding class="story_img" [src]="blog.imgurl"></div>
-      <p no-margin no-padding text-center class="story_text">{{ blog.byuser }}</p>
-    </div>
-  </ion-scroll>
-
   <hr no-margin no-padding>
   <div (swipe)="swipePage($event)">
 
