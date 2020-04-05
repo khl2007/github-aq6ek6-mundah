@@ -3,6 +3,8 @@ import * as firebase from 'firebase/app';
 import { FirebaseService } from './firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,8 @@ export class AuthService {
 
   constructor(
     private firebaseService: FirebaseService,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private afs: AngularFirestore
   ){}
 
   doRegister(value){
