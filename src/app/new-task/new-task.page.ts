@@ -34,16 +34,15 @@ export class NewTaskPage implements OnInit {
   resetFields(){
     this.image = "./assets/imgs/default_image.jpg";
     this.validations_form = this.formBuilder.group({
-      title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      body: new FormControl('', Validators.required)
     });
   }
 
   onSubmit(value){
     let data = {
-      title: value.title,
-      description: value.description,
-      image: this.image
+      body: value.body,
+      byuser: 'test',
+      imgurl: this.image
     }
     this.firebaseService.createTask(data)
     .then(
