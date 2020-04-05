@@ -19,6 +19,13 @@ export class HomePage implements OnInit {
 
 blogs: any;
 
+public like_btn = {
+    color: 'black',
+    icon_name: 'heart-outline'
+  };
+
+  public tap: number = 0;
+
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -62,6 +69,25 @@ getBlogs() {
 
   async presentLoading(loading) {
     return await loading.present();
+  }
+
+  likeButton() {
+    if(this.like_btn.icon_name === 'heart-outline') {
+      this.like_btn.icon_name = 'heart';
+      this.like_btn.color = 'danger';
+      // Do some API job in here for real!
+    }
+    else {
+      this.like_btn.icon_name = 'heart-outline';
+      this.like_btn.color = 'black';
+    }
+  }
+
+  tapPhotoLike(times) { // If we click double times, it will trigger like the post
+    this.tap++;
+    if(this.tap % 2 === 0) {
+      this.likeButton();
+    }
   }
 
   logout(){
