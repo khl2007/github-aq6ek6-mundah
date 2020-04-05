@@ -64,20 +64,6 @@ a {
   filter: brightness(70%);
 }
 
-/* Card Content */
-.card {
-  width: 100vw !important;
-}
-
-.like-content {
-  font-weight: bold;
-  font-family: Helvetica Neue;
-}
-
-.icon-space {
-  padding-top: 3px;
-  padding-left: 10px;
-}
 page-home {
   $grid-padding-width:         1px !default;
   ion-title {
