@@ -49,7 +49,7 @@
   <div (swipe)="swipePage($event)">
 
     <!-- Cards -->
-    <ion-card no-padding padding-bottom no-margin class="card">
+    <ion-card no-padding padding-bottom no-margin class="card" *ngFor="let blog of blogs">
 
       <ion-row>
         <ion-col col-10>
@@ -57,8 +57,8 @@
         <ion-avatar item-left>
           <img src="http://ionicframework.com/dist/preview-app/www/assets/img/sarah-avatar.png.jpeg">
         </ion-avatar>
-        <h2 style="font-weight: bold">ashleyosama</h2>
-        <p>Cyprus</p>
+        <h2 style="font-weight: bold"> {{blog.byuser}} </h2>
+        
         
       </ion-item>
         </ion-col >
@@ -70,7 +70,7 @@
       </ion-row>
       
 
-      <img src="http://ionicframework.com/dist/preview-app/www/assets/img/advance-card-bttf.png" (tap)="tapPhotoLike($event)">
+      <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
 
       <p no-margin no-padding>
         <ion-button clear ion-button icon-only (click)="likeButton()" class="like-btn">
@@ -89,8 +89,8 @@
       <hr>
 
       <ion-card-content>
-        <p class="like-content"><ion-icon name="heart"></ion-icon> 250 likes</p>
-        <p><b>techcrunch</b> Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+        <p class="like-content"><ion-icon name="heart"></ion-icon> {{blog.likes}} likes</p>
+        <p><b> {{blog.byuser}} </b> {{blog.body}} </p>
       
         <ion-note style="font-size: 12px">
           11h ago
