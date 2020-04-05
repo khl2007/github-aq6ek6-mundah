@@ -32,7 +32,7 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
   }
 getBlogs(){
 
-this.blogitemRef = this.afs.collection('/blogs');
+return this.afs.collection('/blogs');
 
 }
   getTask(taskId){
