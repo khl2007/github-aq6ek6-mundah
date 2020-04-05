@@ -19,7 +19,7 @@
 
     <!-- Cards -->
     <ion-card no-padding padding-bottom no-margin class="card" *ngFor="let blog of blogs">
-
+     <ion-grid>
       <ion-row>
         <ion-col col-10>
           <ion-item>
@@ -37,7 +37,7 @@
         </ion-button >
         </ion-col>
       </ion-row>
-      
+      <ion-grid>
 
       <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
 
