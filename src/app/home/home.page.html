@@ -30,6 +30,19 @@
   <div *ngIf="blogs.length == 0" class="empty-list">
     Please create your first task.
   </div>
+
+<ion-card *ngFor="let blog of blogs">    
+   <ion-card-content>
+      <img [src]="blog.imgurl" />
+      <button ion-button block>          <ion-icon name="heart"></ion-icon>        
+<ion-badge item-right>{{blog.likes}}</ion-badge>     
+      </button>            
+      <button ion-button color="danger"   block>        
+          <ion-icon name="trash"></ion-icon>      
+      </button>    
+   </ion-card-content>  
+</ion-card>
+
 </ion-content>
 
 
