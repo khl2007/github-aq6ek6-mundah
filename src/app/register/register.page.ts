@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
@@ -15,6 +16,9 @@ export class RegisterPage implements OnInit {
   successMessage: string = '';
 
   validation_messages = {
+	'username': [
+     { type: 'required', message: 'name is required.' }
+   ],
    'email': [
      { type: 'required', message: 'Email is required.' },
      { type: 'pattern', message: 'Enter a valid email.' }
@@ -38,6 +42,10 @@ export class RegisterPage implements OnInit {
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
       password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])),
+      username: new FormControl('', Validators.compose([
         Validators.minLength(5),
         Validators.required
       ])),
