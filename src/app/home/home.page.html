@@ -41,8 +41,8 @@
 
       <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
 
-      <p no-margin no-padding>
-        <ion-button clear ion-button icon-only (click)="likeButton()" class="like-btn">
+      <ion-item> 
+ <ion-button clear ion-button icon-only (click)="likeButton()" class="like-btn">
           <ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space"></ion-icon>
         </ion-button>
         <ion-button clear ion-button icon-only>
@@ -54,7 +54,7 @@
         <ion-button no-margin no-padding clear color="black" icon-only style="float: right">
           <ion-icon name="ios-bookmark-outline"></ion-icon>
         </ion-button>
-      </p>
+   </ion-item>
       <hr>
 
       <ion-card-content>
