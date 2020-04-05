@@ -80,11 +80,7 @@ return this.afs.collection('/blogs');
   createTask(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').add({
-        title: value.title,
-        description: value.description,
-        image: value.image
-      })
+      this.afs.collection('blogs').add(value)
       .then(
         res => resolve(res),
         err => reject(err)
