@@ -90,6 +90,23 @@ getBlogs() {
     }
   }
 
+swipePage(event) {
+    if(event.direction === 1) { // Swipe Left
+      console.log("Swap Camera");
+    } 
+
+    if(event.direction === 2) { // Swipe Right
+      this.goMessages();
+    }
+    
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop();
+  }
+
+
+
   logout(){
     this.authService.doLogout()
     .then(res => {
