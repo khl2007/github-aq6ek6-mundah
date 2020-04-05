@@ -16,11 +16,29 @@ export class AuthService {
   doRegister(value){
    return new Promise<any>((resolve, reject) => {
      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-     .then(
-       res => resolve(res),
+     .then(res => {
+		  return this.updateUserem(value)
+		  
+	 },
        err => reject(err))
    })
   }
+  
+  updateUserem(user: any) {
+    const newUser: any = {
+      email: user.email,
+      displayName: user.username
+    };
+	 return new Promise<any>((resolve, reject) => {
+      let currentUser = this.afAuth.auth.currentUser.uid;
+      this.afs.collection('users').doc(currentUser).set(newUser)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+
 
   doLogin(value){
    return new Promise<any>((resolve, reject) => {
