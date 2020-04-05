@@ -42,7 +42,8 @@ export class NewTaskPage implements OnInit {
     let data = {
       body: value.body,
       byuser: 'test',
-      imgurl: this.image
+      imgurl: this.image,
+      likes: 50,
     }
     this.firebaseService.createTask(data)
     .then(
