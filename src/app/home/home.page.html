@@ -17,57 +17,7 @@
   <hr no-margin no-padding>
   <div (swipe)="swipePage($event)">
 
-    <!-- Cards -->
-    <ion-card no-padding padding-bottom class="card" *ngFor="let blog of blogs">
-     <ion-grid>
-      <ion-row>
-        <ion-col col-10>
-          <ion-item>
-        <ion-avatar item-left>
-          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/sarah-avatar.png.jpeg">
-        </ion-avatar>
-        <h2 style="font-weight: bold"> {{blog.byuser}} </h2>
-        
-        
-      </ion-item>
-        </ion-col >
-        <ion-col col-2>
-          <ion-button no-margin no-padding clear color="black" ion-button icon-only style="float: right; top: 15px" >
-            <ion-icon name="more"></ion-icon>
-        </ion-button >
-        </ion-col>
-      </ion-row>
-      </ion-grid>
-
-      <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
-
-      <ion-item> 
- <ion-button clear ion-button icon-only (click)="likeButton()" class="like-btn">
-          <ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space"></ion-icon>
-        </ion-button>
-        <ion-button clear ion-button icon-only>
-          <ion-icon no-padding isActive="false" color="black" name="ios-text-outline" class="icon-space" style="font-weight: bold"></ion-icon>
-        </ion-button>
-        <ion-button clear ion-button icon-only>
-          <ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
-        </ion-button>
-        <ion-button no-margin no-padding clear color="black" icon-only style="float: right">
-          <ion-icon name="ios-bookmark-outline"></ion-icon>
-        </ion-button>
-   </ion-item>
-      <hr>
-
-      <ion-card-content>
-        <p class="like-content"><ion-icon name="heart"></ion-icon> {{blog.likes}} likes</p>
-        <p><b> {{blog.byuser}} </b> {{blog.body}} </p>
-      
-        <ion-note style="font-size: 12px">
-          11h ago
-        </ion-note>
-      </ion-card-content>
-
-    </ion-card>
-
+    
   </div>
 
 <ion-card *ngFor="let blog of blogs" >
