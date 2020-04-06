@@ -70,6 +70,18 @@ export class HomePage implements OnInit {
         this.crtusertest = crtusertest;
       });
   }
+
+getUserAvtar() {
+let user: any;
+    return this.firebaseService.getUserInfo().valueChanges().pipe(
+        
+      )
+      .subscribe(crtusertest => {
+        user= crtusertest.avtar;
+      });
+  }
+
+
   getBlogs() {
     this.firebaseService
       .getBlogs()
