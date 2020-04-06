@@ -17,15 +17,15 @@ export class FirebaseService {
 
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
+  private userDocc: AngularFirestoreDocument<User>;
   private userDoc: AngularFirestoreCollection<User>;
-  
 
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
   ){
 
-this.userDoc= this.afs.collection('/users');
+this.userDocc= this.afs.collection('/users');
 
    }
 
@@ -47,7 +47,7 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 
 let currentUser = firebase.auth().currentUser;
-this.userDoc.doc<User>(currentUser.uid).valueChanges().pipe(
+this.userDocc.doc<User>(currentUser.uid).valueChanges().pipe(
 take(1),
 map(user => {
 user.id=currentUser.uid;
