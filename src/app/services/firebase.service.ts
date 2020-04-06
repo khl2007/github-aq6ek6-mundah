@@ -40,6 +40,14 @@ getBlogs(){
 return this.afs.collection('/blogs');
 
 }
+getUserInfoo(){
+
+let currentUser = firebase.auth().currentUser;
+
+retu this.afs.doc<User>('users/' + currentUser.uid);
+
+
+}
 
 getUserInfo(){
 
