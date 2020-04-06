@@ -11,7 +11,8 @@
 
 <ion-content *ngIf="blogs" class="list-mini-content" padding>
  
- 
+  Hi {{ (crtuser | async)?.email }}
+<br>
 Hi {{crtuser.displayname}}
 
   <hr no-margin no-padding>
