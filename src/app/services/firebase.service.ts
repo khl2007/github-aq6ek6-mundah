@@ -23,7 +23,11 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
-  ){}
+  ){
+
+this.userDoc= this.afs.collection('/blogs');
+
+   }
 
   getTasks(){
     return new Promise<any>((resolve, reject) => {
@@ -43,10 +47,13 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 
 let currentUser = firebase.auth().currentUser;
-
-return this.afs.doc<any>('users/' + currentUser.uid);
-
-
+this.userDoc.doc<User>(currentUser.uid).valueChanges().pipe(
+take(1),
+map(user => {
+user.id=currentUser.uid;
+return user
+})
+);
 }
 
 getUserInfo(){
