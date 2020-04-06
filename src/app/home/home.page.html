@@ -1,90 +1,92 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="['/new-task']">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Tasks List</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="end">
+			<ion-button [routerLink]="['/new-task']">
+				<ion-icon slot="icon-only" name="add"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>Tasks List</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="blogs" class="list-mini-content" padding>
- 
-  Hi {{ (crtuser | async)?.displayname }}
-<br>
-Hi {{crtuser.displayname | async}}
 
-  <hr no-margin no-padding>
-  <div (swipe)="swipePage($event)">
+	Hi {{ (crtuser | async)?.displayname }}
 
-    
-  </div>
 
-<ion-card *ngFor="let blog of blogs" >
-  <ion-item>
-    <ion-avatar item-left>
-          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/sarah-avatar.png.jpeg">
+	<hr no-margin no-padding>
+	<div (swipe)="swipePage($event)">
+
+
+	</div>
+
+	<ion-card *ngFor="let blog of blogs">
+		<ion-item>
+			<ion-avatar item-left>
+				<img [src]="(crtuser | async)?.avatar">
         </ion-avatar>
-    <ion-label>  {{blog.byuser}} </ion-label>
-    <ion-button fill="outline" slot="end">View</ion-button>
-  </ion-item>
-  
-  <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
-  
+				<ion-label> {{blog.byuser}} </ion-label>
+				<ion-button fill="outline" slot="end">View</ion-button>
+		</ion-item>
 
-   <ion-item> 
- <ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
-          <ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space"></ion-icon>
-        </ion-button>
-        <ion-button fill="outline" ion-button icon-only>
-          <ion-icon name="chatbubble-outline"></ion-icon>
-        </ion-button>
-        <ion-button fill="outline" ion-button icon-only>
-          <ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
-        </ion-button>
-        <ion-button fill="outline" no-margin no-padding clear color="black" icon-only style="float: right">
-          <ion-icon name="ios-bookmark-outline"></ion-icon>
-        </ion-button>
-   </ion-item>
+		<img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
 
-  <ion-card-content>
-        <p class="like-content"><ion-icon name="heart"></ion-icon> {{blog.likes}} likes</p>
-        <p><b> {{blog.byuser}} </b> {{blog.body}} </p>
-      
-        <ion-note style="font-size: 12px">
-          11h ago
-        </ion-note>
-   </ion-card-content>
-</ion-card>
 
-<ion-card>
-  <ion-item href="#" class="ion-activated">
-    <ion-icon name="wifi" slot="start"></ion-icon>
-    <ion-label>Card Link Item 1 activated</ion-label>
-  </ion-item>
+		<ion-item>
+			<ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
+				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
+				</ion-icon>
+			</ion-button>
+			<ion-button fill="outline" ion-button icon-only>
+				<ion-icon name="chatbubble-outline"></ion-icon>
+			</ion-button>
+			<ion-button fill="outline" ion-button icon-only>
+				<ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
+			</ion-button>
+			<ion-button fill="outline" no-margin no-padding clear color="black" icon-only style="float: right">
+				<ion-icon name="ios-bookmark-outline"></ion-icon>
+			</ion-button>
+		</ion-item>
 
-  <ion-item href="#">
-    <ion-icon name="wine" slot="start"></ion-icon>
-    <ion-label>Card Link Item 2</ion-label>
-  </ion-item>
+		<ion-card-content>
+			<p class="like-content">
+				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
+			</p>
+			<p><b> {{blog.byuser}} </b> {{blog.body}} </p>
 
-  <ion-item class="ion-activated">
-    <ion-icon name="warning" slot="start"></ion-icon>
-    <ion-label>Card Button Item 1 activated</ion-label>
-  </ion-item>
+			<ion-note style="font-size: 12px">
+				11h ago
+			</ion-note>
+		</ion-card-content>
+	</ion-card>
 
-  <ion-item>
-    <ion-icon name="walk" slot="start"></ion-icon>
-    <ion-label>Card Button Item 2</ion-label>
-  </ion-item>
-</ion-card>
+	<ion-card>
+		<ion-item href="#" class="ion-activated">
+			<ion-icon name="wifi" slot="start"></ion-icon>
+			<ion-label>Card Link Item 1 activated</ion-label>
+		</ion-item>
+
+		<ion-item href="#">
+			<ion-icon name="wine" slot="start"></ion-icon>
+			<ion-label>Card Link Item 2</ion-label>
+		</ion-item>
+
+		<ion-item class="ion-activated">
+			<ion-icon name="warning" slot="start"></ion-icon>
+			<ion-label>Card Button Item 1 activated</ion-label>
+		</ion-item>
+
+		<ion-item>
+			<ion-icon name="walk" slot="start"></ion-icon>
+			<ion-label>Card Button Item 2</ion-label>
+		</ion-item>
+	</ion-card>
 
 </ion-content>
 
 
 <ion-footer (click)="logout()">
-  <ion-toolbar color="medium">
-    <ion-title>Log out</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="medium">
+		<ion-title>Log out</ion-title>
+	</ion-toolbar>
 </ion-footer>
