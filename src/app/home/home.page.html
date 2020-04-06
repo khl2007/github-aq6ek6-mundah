@@ -29,9 +29,9 @@ Hi {{crtuser.displayname}}
     <ion-label>  {{blog.byuser}} </ion-label>
     <ion-button fill="outline" slot="end">View</ion-button>
   </ion-item>
-  <ion-item> 
+  
   <img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
-  </ion-item>
+  
 
    <ion-item> 
  <ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
