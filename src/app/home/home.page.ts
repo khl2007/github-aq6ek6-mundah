@@ -3,10 +3,14 @@ import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { Observable } from 'rxjs';
+
 import { map } from 'rxjs/operators';
 
 import { FirebaseService } from '../services/firebase.service';
 import { Blogitem } from '../services/blogitem';
+
+import { User } from '../services/user';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +22,7 @@ export class HomePage implements OnInit {
   items: Array<any>;
 
 blogs: any;
-
+crtuser: Observable<User>;
 public like_btn = {
     color: 'black',
     icon_name: 'heart-outline'
@@ -39,6 +43,7 @@ public like_btn = {
       this.getData();
     }
     this.getBlogs();
+
   }
 
   async getData(){
@@ -55,6 +60,8 @@ public like_btn = {
     })
   }
 getCrtusertest(){
+
+ this.crtuser= this.firebaseService.getBlogs().valueChanges();
 
  
 
