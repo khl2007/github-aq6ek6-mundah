@@ -5,7 +5,7 @@
 				<ion-icon slot="icon-only" name="add"></ion-icon>
 			</ion-button>
 		</ion-buttons>
-		<ion-title>Tasks List</ion-title>
+		<ion-title>home</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
 
 	Hi {{ (crtuser | async)?.displayname }}
 {{crtusertest.displayname }}
-{{crtusertest.e }}
+{{getUserAvtar()}}
 	<hr no-margin no-padding>
 	<div (swipe)="swipePage($event)">
 
