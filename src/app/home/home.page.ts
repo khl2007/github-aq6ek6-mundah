@@ -43,6 +43,7 @@ public like_btn = {
       this.getData();
     }
     this.getBlogs();
+this.getCrtusertest();
 
   }
 
@@ -61,7 +62,7 @@ public like_btn = {
   }
 getCrtusertest(){
 
- this.crtuser= this.firebaseService.getBlogs().valueChanges();
+ this.crtuser= this.firebaseService.getUserInfo().valueChanges();
 
  
 
