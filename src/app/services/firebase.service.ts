@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore , AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore , AngularFirestoreCollection , AngularFirestoreDocument} from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -45,7 +45,7 @@ getUserInfo(){
 
 let currentUser = firebase.auth().currentUser;
 
-return this.afs.doc('users/' + currentUser.uid).valueChanges();
+return this.afs.doc<User>('users/' + currentUser.uid);
 
 }
 
