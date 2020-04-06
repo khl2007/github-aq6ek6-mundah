@@ -35,6 +35,15 @@ getBlogs(){
 return this.afs.collection('/blogs');
 
 }
+
+getUserInfo(){
+
+let currentUser = firebase.auth().currentUser;
+
+return this.afs.doc('users/' + currentUser.uid).valueChanges();
+
+}
+
   getTask(taskId){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
