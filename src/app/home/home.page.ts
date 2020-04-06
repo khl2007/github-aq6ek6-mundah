@@ -54,7 +54,11 @@ public like_btn = {
       })
     })
   }
+getCrtusertest(){
 
+ 
+
+}
 getBlogs() {
     this.firebaseService.getBlogs().snapshotChanges().pipe(
       map(changes =>
