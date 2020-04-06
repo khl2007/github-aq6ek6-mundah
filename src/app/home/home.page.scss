@@ -5,7 +5,12 @@
   margin-top: 40px;
   color: var(--ion-color-medium);
 }
-
+img {
+    max-width: 100%;
+    border: 0;
+    width: 100%;
+    display: block;
+}
 @keyframes heartbeat
 {
   0%

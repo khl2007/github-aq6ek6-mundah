@@ -13,7 +13,7 @@
  
   Hi {{ (crtuser | async)?.displayname }}
 <br>
-Hi {{crtuser.displayname}}
+Hi {{crtuser.displayname | async}}
 
   <hr no-margin no-padding>
   <div (swipe)="swipePage($event)">
