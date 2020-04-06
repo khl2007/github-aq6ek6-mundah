@@ -29,7 +29,7 @@
 				<ion-button fill="outline" slot="end">View</ion-button>
 		</ion-item>
 
-		<img [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
+		<img *ngIf="blog.imgurl" [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
 
 
 		<ion-item>
