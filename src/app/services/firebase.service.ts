@@ -25,7 +25,7 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
     public afAuth: AngularFireAuth
   ){
 
-this.userDoc= this.afs.collection('/blogs');
+this.userDoc= this.afs.collection('/users');
 
    }
 
