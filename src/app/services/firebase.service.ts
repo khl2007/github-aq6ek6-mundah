@@ -44,7 +44,7 @@ getUserInfoo(){
 
 let currentUser = firebase.auth().currentUser;
 
-retu this.afs.doc<User>('users/' + currentUser.uid);
+return this.afs.doc<an>('users/' + currentUser.uid);
 
 
 }

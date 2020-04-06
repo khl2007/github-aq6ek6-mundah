@@ -63,7 +63,7 @@ export class HomePage implements OnInit {
     this.crtuser = this.firebaseService.getUserInfo().valueChanges();
   }
   getCrtusertestt() {
-    return this.firebaseService.getUserInfo().valueChanges().pipe(
+    return this.firebaseService.getUserInfoo().valueChanges().pipe(
         map(changes =>
           changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))
         )
