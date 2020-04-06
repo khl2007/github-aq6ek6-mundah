@@ -19,7 +19,7 @@ import { User } from "../services/user";
 })
 export class HomePage implements OnInit {
   items: Array<any>;
-
+  crtusertest : any;
   blogs: any;
   crtuser: Observable<User>;
   public like_btn = {
@@ -43,6 +43,7 @@ export class HomePage implements OnInit {
     }
     this.getBlogs();
     this.getCrtusertest();
+     this.getCrtusertestt();
   }
 
   async getData() {
@@ -60,6 +61,16 @@ export class HomePage implements OnInit {
   }
   getCrtusertest() {
     this.crtuser = this.firebaseService.getUserInfo().valueChanges();
+  }
+  getCrtusertestt() {
+    return this.firebaseService.getUserInfo().valueChanges().pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))
+        )
+      )
+      .subscribe(crtusertest => {
+        this.crtusertest = crtusertest;
+      });
   }
   getBlogs() {
     this.firebaseService
