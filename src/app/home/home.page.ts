@@ -63,7 +63,7 @@ export class HomePage implements OnInit {
     this.crtuser = this.firebaseService.getUserInfo().valueChanges();
   }
   getCrtusertestt() {
-    return this.firebaseService.getUserInfoo().valueChanges().pipe(
+    return this.firebaseService.getUserInfo().valueChanges().pipe(
         
       )
       .subscribe(crtusertest => {
