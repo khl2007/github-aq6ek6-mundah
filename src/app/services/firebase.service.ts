@@ -6,6 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Blogitem } from './blogitem';
 
+import { User } from './user';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,9 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
 
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
+
+  private userDoc: AngularFirestoreDocument<Item>;
+  
 
   constructor(
     public afs: AngularFirestore,
