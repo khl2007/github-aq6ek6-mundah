@@ -17,7 +17,7 @@ export class FirebaseService {
 
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
-  private userDoc: AngularFirestoreDocument<User>;
+  private userDoc: AngularFirestoreCollection<User>;
   
 
   constructor(
