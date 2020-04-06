@@ -71,15 +71,6 @@ export class HomePage implements OnInit {
       });
   }
 
-getUserAvtar() {
-let user: any;
-    return this.firebaseService.getUserInfo().valueChanges().pipe(
-        
-      )
-      .subscribe(crtusertest => {
-        user= crtusertest.email;
-      });
-  }
 
 
   getBlogs() {
