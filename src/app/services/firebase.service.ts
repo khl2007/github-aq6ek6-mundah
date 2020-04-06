@@ -17,7 +17,7 @@ export class FirebaseService {
 
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
-  private userDoc: AngularFirestoreDocument<Item>;
+  private userDoc: AngularFirestoreDocument<User>;
   
 
   constructor(
@@ -45,7 +45,8 @@ getUserInfo(){
 
 let currentUser = firebase.auth().currentUser;
 
-return this.afs.doc<User>('users/' + currentUser.uid);
+this.userDoc= this.afs.doc<User>('users/' + currentUser.uid);
+return this.userDoc;
 
 }
 
