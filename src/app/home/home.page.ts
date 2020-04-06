@@ -77,7 +77,7 @@ let user: any;
         
       )
       .subscribe(crtusertest => {
-        user= crtusertest.avtar;
+        user= crtusertest.email;
       });
   }
 
