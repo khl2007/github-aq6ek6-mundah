@@ -19,7 +19,7 @@ import { User } from "../services/user";
 })
 export class HomePage implements OnInit {
   items: Array<any>;
-  crtusertest : any;
+  crtusertest : Observable<User>;
   blogs: any;
   crtuser: Observable<User>;
   public like_btn = {
