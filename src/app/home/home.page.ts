@@ -19,10 +19,10 @@ import { User } from "../services/user";
 })
 export class HomePage implements OnInit {
   items: Array<any>;
-  crtusertest : Observable<User>;
+  crtusertest: Observable<User>;
   blogs: any;
   crtuser: Observable<User>;
-  someuser : any;
+  someuser: any;
   public like_btn = {
     color: "black",
     icon_name: "heart-outline"
@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
     }
     this.getBlogs();
     this.getCrtusertest();
-     this.getCrtusertestt();
+    this.getCrtusertestt();
   }
 
   async getData() {
@@ -65,18 +65,21 @@ export class HomePage implements OnInit {
   }
 
   getCrtusertestt() {
+    this.firebaseService.getUserInfoo().subscribe(resdata => {
+      let data = resdata["data"];
+      if (data) {
+        this.someuser = data.payload.data();
+        this.someuser.id = data.payload.id;
+      }
+    });
 
-this.firebaseService.getUserInfoo().valueChanges().subscribe(data =>{ 
-  this.someuser = data;
-  console.log("thetestuserservice: ",this.someuser);
-  console.log("data: ", data);
-});
-
-console.log("Error getting documents: ", this.someuser.email);
-
+    /this.crtuser.subscribe(data => {
+      this.someuser = data;
+      console.log("thetestuserservice: ", this.someuser.email);
+      console.log("data: ", data);
+    });
+    console.log("thetestuserservice: ", this.someuser);
   }
-
-
 
   getBlogs() {
     this.firebaseService

@@ -47,7 +47,8 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 let thetestuser: any;
 let currentUser = firebase.auth().currentUser;
-return this.afs.doc<User>('users/' + currentUser.uid);
+//return this.afs.doc<User>('users/' + currentUser.uid);
+return this.afs.collection('users').doc(currentUser.uid).snapshotChanges();
 console.log("service function caled ");
 
 }
