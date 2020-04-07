@@ -47,7 +47,11 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 let thetestuser: any;
 let currentUser = firebase.auth().currentUser;
-this.afs.doc<User>('users/' + currentUser.uid).valueChanges().subscribe(data => thetestuser = data);
+this.afs.doc<User>('users/' + currentUser.uid).valueChanges().subscribe(data =>{ 
+  thetestuser = data;
+  console.log("thetestuser: ", thetestuser);
+  console.log("d: ", data);
+});
 return thetestuser;
 }
 
