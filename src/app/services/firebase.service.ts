@@ -3,7 +3,7 @@ import { AngularFirestore , AngularFirestoreCollection , AngularFirestoreDocumen
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
-
+import { Observable } from "rxjs";
 import { Blogitem } from './blogitem';
 
 import { User } from './user';
@@ -19,7 +19,7 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
-
+  someuser : Observable<User>;
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
@@ -47,12 +47,13 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 let thetestuser: any;
 let currentUser = firebase.auth().currentUser;
-this.afs.doc<User>('users/' + currentUser.uid).valueChanges().subscribe(data =>{ 
-  thetestuser = data;
+return this.afs.doc<User>('users/' + currentUser.uid).valueChanges().subscribe(data =>{ 
+  
   console.log("thetestuser: ", thetestuser);
-  console.log("d: ", data);
+  console.log("data: ", data);
 });
-return thetestuser;
+console.log("thetestuser2: ", this.someuser);
+
 }
 
 getUserInfo(){
