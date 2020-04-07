@@ -19,7 +19,7 @@ blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
-  someuser : Observable<User>;
+  
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
@@ -47,12 +47,8 @@ return this.afs.collection('/blogs');
 getUserInfoo(){
 let thetestuser: any;
 let currentUser = firebase.auth().currentUser;
-return this.afs.doc<User>('users/' + currentUser.uid).valueChanges().subscribe(data =>{ 
-  
-  console.log("thetestuser: ", thetestuser);
-  console.log("data: ", data);
-});
-console.log("thetestuser2: ", this.someuser);
+return this.afs.doc<User>('users/' + currentUser.uid);
+console.log("service function caled ");
 
 }
 

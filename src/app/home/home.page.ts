@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   crtusertest : Observable<User>;
   blogs: any;
   crtuser: Observable<User>;
+  someuser : any;
   public like_btn = {
     color: "black",
     icon_name: "heart-outline"
@@ -62,11 +63,16 @@ export class HomePage implements OnInit {
   getCrtusertest() {
     this.crtuser = this.firebaseService.getUserInfo().valueChanges();
   }
+
   getCrtusertestt() {
 
-this.crtusertest = this.firebaseService.getUserInfoo();
+this.firebaseService.getUserInfoo().valueChanges().subscribe(data =>{ 
+  this.someuser = data;
+  console.log("thetestuserservice: ",this.someuser);
+  console.log("data: ", data);
+});
 
-console.log("Error getting documents: ", this.crtusertest);
+console.log("Error getting documents: ", this.someuser.email);
 
   }
 
