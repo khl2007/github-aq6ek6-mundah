@@ -66,6 +66,8 @@ export class HomePage implements OnInit {
 
 this.crtusertest = this.firebaseService.getUserInfoo();
 
+console.log("Error getting documents: ", this.crtusertest);
+
   }
 
 
