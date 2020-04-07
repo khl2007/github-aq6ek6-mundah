@@ -67,17 +67,14 @@ export class HomePage implements OnInit {
   getCrtusertestt() {
     this.firebaseService.getUserInfoo().subscribe(resdata => {
       let data = resdata["data"];
-      if (data) {
-        this.someuser = data.payload.data();
-        this.someuser.id = data.payload.id;
-      }
+     
     });
 
-    /this.crtuser.subscribe(data => {
+    /*this.crtuser.subscribe(data => {
       this.someuser = data;
       console.log("thetestuserservice: ", this.someuser.email);
       console.log("data: ", data);
-    });
+    });*/
     console.log("thetestuserservice: ", this.someuser);
   }
 
