@@ -74,7 +74,7 @@ export class FirebaseService {
                 return Object.assign({
                   blogrefid: blogid,
                   buserid: userid,
-                  user: userData.displayname,
+                  user: userData.displayName,
                   useravtar: userData.avatar,
                   body: blgbody,
                   bimgurl: blgimg,
