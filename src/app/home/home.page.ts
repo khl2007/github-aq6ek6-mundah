@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
   items: Array<any>;
   crtusertest: Observable<User>;
   blogs: any;
+  postfeed :any;
   crtuser: Observable<User>;
   someuser: any;
   public like_btn = {
@@ -45,6 +46,7 @@ export class HomePage implements OnInit {
     this.getBlogs();
     this.getCrtusertest();
     this.getCrtusertestt();
+    this.postfeed=this.firebaseService.sellectAllNews();
   }
 
   async getData() {
