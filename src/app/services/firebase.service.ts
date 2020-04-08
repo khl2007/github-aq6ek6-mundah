@@ -53,31 +53,26 @@ return this.afs.collection('/blogs');
 
 }
 
-getBlogstest{
+collectionInitialization() {
+    this.blogsRef = this.afs.collection('blogs');
+     this.feedItem = this.blogsRef.snapshotChanges().pipe(map(changes  => {
+      return changes.map( change => {
+       const data = c.payload.doc.data();
+       const blogid = c.payload.doc.id ;
+       const userid = c.payload.doc.byuser;
+       const blgbody = c.payload.doc.body;
+       const  blgimg = c.payload.doc.imgurl;
+       const  bloglikes = c.payload.doc.likes;
 
-this.feedItem =this.blogsRef.snapshotChanges().pipe(map(changes => changes.map(c => (
-
-const data = c.payload.doc.data();
-const blogid = c.payload.doc.id ;
-const userid = c.payload.doc.byuser;
-
-const blgbody = c.payload.doc.body;
-const  blgimg = c.payload.doc.imgurl;
-
-const  bloglikes = c.payload.doc.likes;
-
-return this.afs.doc<User>('users/' + userid).valueChanges().pipe(map( (userData: User) => {
+          return this.afs.doc('users/' + userid).valueChanges().pipe(map( (userData: User) => {
             return Object.assign(
               { blogrefid: blogid ,buserid: userid,user: userData.firstName, useravtar: userData.avtar, body: blgbody, bimgurl: blgimg , likes : bloglikes}); }
           ));
+      });
+    }), flatMap(feeds => combineLatest(feeds)));
+  }
 
-))
-        ) , flatMap(feeds => combineLatest(feeds)));
-     
-
-}
-
-sellectAllBlogs() {
+  sellectAllNews() {
     this.collectionInitialization();
     return this.feedItem;
   }
