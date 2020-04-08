@@ -6,7 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable , combineLatest} from "rxjs";
 import { Blogitem } from './blogitem';
 
-import { Feed } from './blfeed';
+import { Feed } from './postfeed';
 
 import {flatMap, map} from 'rxjs/operators';
 
@@ -66,7 +66,7 @@ collectionInitialization() {
 
           return this.afs.doc('users/' + userid).valueChanges().pipe(map( (userData: User) => {
             return Object.assign(
-              { blogrefid: blogid ,buserid: userid,user: userData.firstName, useravtar: userData.avtar, body: blgbody, bimgurl: blgimg , likes : bloglikes}); }
+              { blogrefid: blogid ,buserid: userid,user: userData.displayname, useravtar: userData.avatar, body: blgbody, bimgurl: blgimg , likes : bloglikes}); }
           ));
       });
     }), flatMap(feeds => combineLatest(feeds)));
