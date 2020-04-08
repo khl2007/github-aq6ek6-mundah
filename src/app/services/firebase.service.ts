@@ -22,6 +22,7 @@ export class FirebaseService {
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
   feedItem: Observable<Feed[]>;
+  feeditems : any [];
 
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
@@ -77,10 +78,15 @@ collectionInitialization() {
  let result = [];
 this.feedItem.forEach(value => {
   console.log(value);
+  
 });
-
+ console.log(this.feedItem);
+   // return result;
     return this.feedItem;
   }
+
+ 
+
 
 getUserInfoo(){
 let thetestuser: any;

@@ -46,13 +46,15 @@ export class HomePage implements OnInit {
     this.getBlogs();
     this.getCrtusertest();
     this.getCrtusertestt();
-    this.postfeed=this.hack(this.firebaseService.sellectAllNews());
+    //this.postfeed= this.firebaseService.sellectAllNews();
+    this.firebaseService.sellectAllNews().subscribe(res => {
+   console.log(res);
+   this.postfeed = res;
+});
 
   }
 
-hack(val) {
-  return Array.from(val);
-}
+
   async getData() {
     const loading = await this.loadingCtrl.create({
       message: "Please wait..."
