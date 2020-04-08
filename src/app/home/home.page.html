@@ -23,7 +23,7 @@
 				<img [src]="blog.useravtar">
         </ion-avatar>
 				<ion-label> {{blog.user}} </ion-label>
-				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.]">View</ion-button>
+				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.blogrefid]">View</ion-button>
 		</ion-item>
 
 		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">

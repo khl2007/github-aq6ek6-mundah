@@ -10,7 +10,7 @@ export class DetailsResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot) {
 
     return new Promise((resolve, reject) => {
-      let itemId = route.paramMap.get('id');
+      let itemId = route.paramMap.get('blogrefid');
       this.firebaseService.getTask(itemId)
       .then(data => {
         data.id = itemId;
