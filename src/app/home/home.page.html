@@ -17,13 +17,13 @@
 
 	</div>
 
-	<ion-card *ngFor="let blog of postfeed ">
+	<ion-card *ngFor="let blog of postfeed " >
 		<ion-item>
 			<ion-avatar item-left>
 				<img [src]="blog.useravtar">
         </ion-avatar>
 				<ion-label> {{blog.user}} </ion-label>
-				<ion-button fill="outline" slot="end">View</ion-button>
+				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.]">View</ion-button>
 		</ion-item>
 
 		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">

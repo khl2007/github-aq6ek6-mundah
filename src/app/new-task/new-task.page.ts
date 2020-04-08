@@ -45,7 +45,7 @@ export class NewTaskPage implements OnInit {
       byuser: this.firebaseService.getUserId(),
       imgurl: this.image,
       likes: 0,
-      crtd: this.firebaseService.getTimeSamp
+      crtd: this.firebaseService.getTimeSamp()
     }
     this.firebaseService.createTask(data)
     .then(
