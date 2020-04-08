@@ -6,6 +6,6 @@ export interface Feed {
   body?: string;
   bimgurl?: string;
   likes? : string;
-
+  crtd? : string;
 }
 

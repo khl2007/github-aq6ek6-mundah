@@ -65,7 +65,7 @@ export class FirebaseService {
           const blgbody = data.body;
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
-
+          const blogcrtd = data.crtd;
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -78,6 +78,7 @@ export class FirebaseService {
                   useravtar: userData.avatar,
                   body: blgbody,
                   bimgurl: blgimg,
+                  crtd: blogcrtd,
                   likes: bloglikes
                 });
               })
