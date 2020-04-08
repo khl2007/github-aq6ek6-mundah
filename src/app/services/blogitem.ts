@@ -1,5 +1,6 @@
 export class Blogitem {
   key: string;
   body: string;
-  Imgurl: string;
+  imgurl: string;
+  byuser: string;
 }
