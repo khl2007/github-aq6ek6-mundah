@@ -21,6 +21,8 @@ export class FirebaseService {
 
 blogsRef: AngularFirestoreCollection<Blogitem> = null;
 
+  feedItem: Observable<Feed[]>;
+
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
   
@@ -53,7 +55,7 @@ return this.afs.collection('/blogs');
 
 getBlogstest{
 
-this.blogsRef.snapshotChanges()
+this.feedItem =this.blogsRef.snapshotChanges()
       .pipe(
         map(changes =>
           changes.map(c => (
@@ -73,14 +75,15 @@ return this.afs.doc<User>('users/' + userid).valueChanges().pipe(map( (userData:
           ));
 
 ))
-        )
-      )
-      .subscribe(blogs => {
-        this.blogs = blogs;
-      });
+        ) , flatMap(feeds => combineLatest(feeds)));
+     
 
 }
 
+sellectAllBlogs() {
+    this.collectionInitialization();
+    return this.feedItem;
+  }
 
 getUserInfoo(){
 let thetestuser: any;
