@@ -55,10 +55,7 @@ return this.afs.collection('/blogs');
 
 getBlogstest{
 
-this.feedItem =this.blogsRef.snapshotChanges()
-      .pipe(
-        map(changes =>
-          changes.map(c => (
+this.feedItem =this.blogsRef.snapshotChanges().pipe(map(changes => changes.map(c => (
 
 const data = c.payload.doc.data();
 const blogid = c.payload.doc.id ;
