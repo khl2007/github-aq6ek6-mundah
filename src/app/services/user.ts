@@ -1,6 +1,6 @@
 export class User {
   key: string;
-  displayname: string;
+  displayName: string;
   avatar: string;
   email: string;
 }
