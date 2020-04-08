@@ -59,10 +59,10 @@ collectionInitialization() {
       return changes.map( c => {
        const data = c.payload.doc.data();
        const blogid = c.payload.doc.id ;
-       const userid = c.payload.doc.byuser;
-       const blgbody = c.payload.doc.body;
-       const  blgimg = c.payload.doc.imgurl;
-       const  bloglikes = c.payload.doc.likes;
+       const userid = data.byuser;
+       const blgbody = data.body;
+       const  blgimg = data.imgurl;
+       const  bloglikes = data.likes;
 
           return this.afs.doc('users/' + userid).valueChanges().pipe(map( (userData: User) => {
             return Object.assign(
