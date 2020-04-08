@@ -56,7 +56,7 @@ return this.afs.collection('/blogs');
 collectionInitialization() {
     this.blogsRef = this.afs.collection('blogs');
      this.feedItem = this.blogsRef.snapshotChanges().pipe(map(changes  => {
-      return changes.map( change => {
+      return changes.map( c => {
        const data = c.payload.doc.data();
        const blogid = c.payload.doc.id ;
        const userid = c.payload.doc.byuser;
