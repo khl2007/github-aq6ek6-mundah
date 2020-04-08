@@ -3,4 +3,5 @@ export class Blogitem {
   body: string;
   imgurl: string;
   byuser: string;
+  likes: string;
 }
