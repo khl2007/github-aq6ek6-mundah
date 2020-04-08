@@ -55,8 +55,9 @@ this.blogsRef.snapshotChanges()
           changes.map(c => (
 
 const data = c.payload.doc.data();
-const blogid= c.payload.doc.id ;
-
+const blogid = c.payload.doc.id ;
+const userid = c.payload.doc.byuser;
+return this.afs.doc<User>('users/' + userid);
 
 ))
         )
