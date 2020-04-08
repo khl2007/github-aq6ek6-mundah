@@ -74,7 +74,7 @@ collectionInitialization() {
 
   sellectAllNews() {
     this.collectionInitialization();
-
+ let result = [];
 this.feedItem.forEach(value => {
   console.log(value);
 });

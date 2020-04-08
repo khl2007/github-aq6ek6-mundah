@@ -47,6 +47,7 @@ export class HomePage implements OnInit {
     this.getCrtusertest();
     this.getCrtusertestt();
     this.postfeed=this.firebaseService.sellectAllNews();
+    
   }
 
   async getData() {

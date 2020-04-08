@@ -10,25 +10,23 @@
 </ion-header>
 
 <ion-content *ngIf="blogs" class="list-mini-content" padding>
-
-	Hi {{ (crtuser | async)?.displayname }}
-Hi again 
+ 
 	<hr no-margin no-padding>
 	<div (swipe)="swipePage($event)">
 
 
 	</div>
 
-	<ion-card *ngFor="let blog of blogs">
+	<ion-card *ngFor="let blog of postfeed ">
 		<ion-item>
 			<ion-avatar item-left>
-				<img [src]="(crtuser | async)?.avatar">
+				<img [src]="blog.useravtar">
         </ion-avatar>
-				<ion-label> {{blog.byuser}} </ion-label>
+				<ion-label> {{blog.user}} </ion-label>
 				<ion-button fill="outline" slot="end">View</ion-button>
 		</ion-item>
 
-		<img *ngIf="blog.imgurl" [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
+		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">
 
 
 		<ion-item>
@@ -51,13 +49,14 @@ Hi again
 			<p class="like-content">
 				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
 			</p>
-			<p><b> {{blog.byuser}} </b> {{blog.body}} </p>
+			<p><b> {{blog.user}} </b> {{blog.body}} </p>
 
 			<ion-note style="font-size: 12px">
 				11h ago
 			</ion-note>
 		</ion-card-content>
 	</ion-card>
+
 
 	<ion-card>
 		<ion-item href="#" class="ion-activated">
