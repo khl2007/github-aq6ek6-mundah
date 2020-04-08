@@ -6,6 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable , combineLatest} from "rxjs";
 import { Blogitem } from './blogitem';
 
+import { Feed } from './blogfeed';
+
 import {flatMap, map} from 'rxjs/operators';
 
 import { User } from './user';
