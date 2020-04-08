@@ -39,11 +39,13 @@ export class NewTaskPage implements OnInit {
   }
 
   onSubmit(value){
+    
     let data = {
       body: value.body,
       byuser: this.firebaseService.getUserId(),
       imgurl: this.image,
       likes: 0,
+      crtd: this.firebaseService.getTimeSamp
     }
     this.firebaseService.createTask(data)
     .then(

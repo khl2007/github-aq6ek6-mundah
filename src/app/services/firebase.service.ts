@@ -104,6 +104,9 @@ export class FirebaseService {
   return  firebase.auth().currentUser.uid;
 
   }
+  getTimeSamp(){
+   return firebase.firestore.FieldValue.serverTimestamp();
+  }
   getUserInfoo() {
     let thetestuser: any;
     let currentUser = firebase.auth().currentUser;
