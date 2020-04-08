@@ -52,7 +52,7 @@
 			<p><b> {{blog.user}} </b> {{blog.body}} </p>
 
 			<ion-note style="font-size: 12px">
-				11h ago
+				{{blog.crtd * 1000 | date:'MM-dd-yyyy'}}
 			</ion-note>
 		</ion-card-content>
 	</ion-card>
