@@ -83,7 +83,7 @@ export class HomePage implements OnInit {
       console.log("thetestuserservice: ", this.someuser.email);
       console.log("data: ", data);
     });*/
-    console.log("thetestuserservice: ", this.someuser);
+   // console.log("thetestuserservice: ", this.someuser);
   }
 
   getBlogs() {

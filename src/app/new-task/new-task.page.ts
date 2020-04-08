@@ -41,9 +41,9 @@ export class NewTaskPage implements OnInit {
   onSubmit(value){
     let data = {
       body: value.body,
-      byuser: 'test',
+      byuser: this.firebaseService.getUserId(),
       imgurl: this.image,
-      likes: 50,
+      likes: 0,
     }
     this.firebaseService.createTask(data)
     .then(
