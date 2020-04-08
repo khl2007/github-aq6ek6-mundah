@@ -32,7 +32,7 @@ export class NewTaskPage implements OnInit {
   }
 
   resetFields(){
-    this.image = "./assets/imgs/default_image.jpg";
+    this.image = "";
     this.validations_form = this.formBuilder.group({
       body: new FormControl('', Validators.required)
     });
