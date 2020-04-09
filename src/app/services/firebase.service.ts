@@ -60,8 +60,8 @@ export class FirebaseService {
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
-          //this.lastVisible = c.payload.doc[c.payload.doc.length-1];
-          this.lastVisible = c[c.length - 1].payload.doc;
+          
+         // this.lastVisible = c[0].payload.doc;
           const data = c.payload.doc.data();
           const blogid = c.payload.doc.id;
           const userid = data.byuser;
@@ -70,6 +70,7 @@ export class FirebaseService {
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
           //this.startq = c[0].payload.doc;
+          this.lastVisible = data.crtd;
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -98,9 +99,9 @@ loadnextvals() {
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
-          //this.lastVisible = c.payload.doc[c.payload.doc.length-1];
+         
 
-this.lastVisible = c[c.length - 1].payload.doc;
+//this.lastVisible = c[c.length - 1].payload.doc;
 
           const data = c.payload.doc.data();
           const blogid = c.payload.doc.id;
@@ -109,6 +110,7 @@ this.lastVisible = c[c.length - 1].payload.doc;
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
+           this.lastVisible =data.crtd;
           //this.startq = c[0].payload.doc;
           return this.afs
             .doc("users/" + userid)
