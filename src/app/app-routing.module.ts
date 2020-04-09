@@ -25,7 +25,6 @@ const routes: Routes = [
     path: "profile",
     loadChildren: "./profile/profile.module#ProfilePageModule"
   },
-
   {
     path: "chats",
     loadChildren: "./chats/chats.module#ChatsPageModule"
