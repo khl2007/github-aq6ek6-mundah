@@ -3,6 +3,8 @@ import { AuthService } from "../services/auth.service";
 import { LoadingController } from "@ionic/angular";
 import { Router, ActivatedRoute } from "@angular/router";
 
+import { IonInfiniteScroll } from '@ionic/angular';
+
 import { Observable } from "rxjs";
 
 import { map } from "rxjs/operators";
@@ -18,7 +20,9 @@ import { User } from "../services/user";
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  items: Array<any>;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
+items: Array<any>;
   crtusertest: Observable<User>;
   blogs: any;
   postfeed :any;
@@ -54,9 +58,21 @@ export class HomePage implements OnInit {
 
   }
 
-infinitload(){
+infinitload(event){
+
+setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
 
 this.firebaseService.loadnextvals();
+
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+     /* if (data.length == 1000) {
+        event.target.disabled = true;
+      }/*
+    }, 500);
+
 
 }
 
