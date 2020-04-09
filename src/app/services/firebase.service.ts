@@ -55,9 +55,13 @@ export class FirebaseService {
     return this.afs.collection("/blogs");
   }
 
-  collectionInitialization() {
-
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100).where('byuser', '==', firebase.auth().currentUser.uid));
+  collectionInitialization(userid) {
+    if (userid){
+     this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100).where('byuser', '==', userid));
+    } else {
+    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
+    }
+   
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
