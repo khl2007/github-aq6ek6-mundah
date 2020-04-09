@@ -21,6 +21,12 @@ const routes: Routes = [
     path: "publicprofile",
     loadChildren: "./publicprofile/publicprofile.module#PublicprofilePageModule"
   },
+
+  {
+    path: "profile",
+    loadChildren: "./profile/profile.module#ProfilePageModule"
+  },
+
   {
     path: "chats",
     loadChildren: "./chats/chats.module#ChatsPageModule"
