@@ -33,7 +33,6 @@ const routes: Routes = [
     path: "welcome",
     loadChildren: "./welcome/welcome.module#WelcomePageModule"
   },
-  
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },
 ];
 
