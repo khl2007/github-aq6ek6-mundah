@@ -32,9 +32,9 @@ export class FirebaseService {
   private userDocc: AngularFirestoreCollection<User>;
 
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
-    this.userDocc = this.afs.collection("/users");
+    //this.userDocc = this.afs.collection("/users");
 
-    this.blogsRef = this.afs.collection("/blogs");
+   // this.blogsRef = this.afs.collection("/blogs");
   }
 
   getTasks() {
@@ -144,7 +144,7 @@ loadnextvals() {
   console.log(value);
   
 });*/
-    console.log(this.feedItem);
+    //console.log(this.feedItem);
     // return result;
     return this.feedItem;
   }
@@ -156,6 +156,7 @@ loadnextvals() {
   getTimeSamp(){
    return firebase.firestore.FieldValue.serverTimestamp();
   }
+
   getUserInfoo() {
     let thetestuser: any;
     let currentUser = firebase.auth().currentUser;
