@@ -15,17 +15,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true" slot="fixed" >
+<ion-content>
     <div class="card">
       <div class="header">
         <div class="avatar">
-          <img [src]="userData.avtar" alt="">
+         
+          <img [src]="userData.avtar">
         </div>
       </div>
       <div class="card-body">
         <div class="user-meta ion-text-center">
           <h3 class="playername"> {{userData.displayName}} </h3>
-          <h5 class="country">Switzerland</h5>
+          <h5 class="country">  {{userData.email}}  </h5>
           <h6 class="ranking">Current ranking: <ion-chip>
               <ion-label>2</ion-label>
             </ion-chip>
