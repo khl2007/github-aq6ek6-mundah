@@ -105,7 +105,7 @@ loadnextvals() {
 
           const data = c.payload.doc.data();
           const blogid = c.payload.doc.id;
-          const userid = data.byuser;
+          const userid =  data.byuser;
           const blgbody = data.body;
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
