@@ -23,7 +23,7 @@ const userid : string ;
 
 userData: User = new User();
 
-blogPost: Observable<Blogitem[]>;
+postfeed: any;
 
 public like_btn = {
     color: "black",
@@ -67,10 +67,11 @@ console.log(this.userData);
    }
 
 getBlogPosts(userid) {
-    this.firebaseService.getUserBlogs(userid).subscribe(result => {
-        this.blogPost = result;
-      });
 
+this.firebaseService.sellectUserNews(userid).subscribe(res => {
+   console.log(res);
+   this.postfeed = res;
+});
 console.log(this.blogPost);
 
   }
