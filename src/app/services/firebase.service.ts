@@ -23,8 +23,8 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
 
   blogsRef: AngularFirestoreCollection<Blogitem> = null;
-  let startq : null;
-  let endq : null;
+  v startq : any;
+  let endq : any;
   feedItem: Observable<Feed[]>;
   feeditems: any[];
   let pagesize= 10;
@@ -68,7 +68,7 @@ export class FirebaseService {
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
-          this.start = c[0].payload.doc;
+          this.startq = c[0].payload.doc;
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -105,7 +105,7 @@ loadmoredata {
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
-          this.start = c[0].payload.doc;
+          this.startq = c[0].payload.doc;
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
