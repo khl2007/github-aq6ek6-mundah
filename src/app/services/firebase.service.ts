@@ -171,13 +171,13 @@ loadnextvals() {
   getUserInfo(userid: string) : Observable<User>{
     //let currentUser = firebase.auth().currentUser;
 
-    this.userDoc = this.afs.doc<User>("users/" + userid).valueChanges();
-    return this.userDoc;
+   const userDetails = this.afs.doc<User>("users/" + userid).valueChanges();
+    return userDetails;
   }
 
 getUserBlogs(userid: string) : Observable<Blogitem[]>{
 
-const blogs = this.db.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 'desc').where('byuser', '==', userid)).snapshotChanges().pipe(
+const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 'desc').where('byuser', '==', userid)).snapshotChanges().pipe(
       map(actions => {
         return actions.map(
           c => ({
