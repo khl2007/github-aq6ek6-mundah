@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: "./new-task/new-task.module#NewTaskPageModule"
   },
   {
-    path: "publicprofile",
+    path: "publicprofile/:buserid",
     loadChildren: "./publicprofile/publicprofile.module#PublicprofilePageModule"
   },
   {
