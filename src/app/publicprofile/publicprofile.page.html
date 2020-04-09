@@ -43,6 +43,44 @@
       </div>
     </div>
 
+<ion-card *ngFor="let blog of blogData " >
+		<ion-item>
+			<ion-avatar item-left [routerLink]="['/publicprofile', userData.userid]" >
+				<img [src]="userData.useravtar">
+        </ion-avatar>
+				<ion-label><a [routerLink]="['/publicprofile', userData.userid]" > {{userData.displayName}} </a> </ion-label>
+				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.key]">View</ion-button>
+		</ion-item>
 
+		<img *ngIf="blog.imgurl" [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
+
+
+		<ion-item>
+			<ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
+				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
+				</ion-icon>
+			</ion-button>
+			<ion-button fill="outline" ion-button icon-only>
+				<ion-icon name="chatbubble-outline"></ion-icon>
+			</ion-button>
+			<ion-button fill="outline" ion-button icon-only>
+				<ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
+			</ion-button>
+			<ion-button fill="outline" no-margin no-padding clear color="black" icon-only style="float: right">
+				<ion-icon name="ios-bookmark-outline"></ion-icon>
+			</ion-button>
+		</ion-item>
+
+		<ion-card-content>
+			<p class="like-content">
+				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
+			</p>
+			<p><b> {{userData.displayName}} </b> {{blog.body}} </p>
+
+			<ion-note style="font-size: 12px">
+				{{blog.crtd * 1000 | date:'MM-dd-yyyy'}}
+			</ion-note>
+		</ion-card-content>
+	</ion-card>
 
 </ion-content>
