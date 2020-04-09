@@ -43,6 +43,8 @@ this.userid = this.route.snapshot.params['buserid'];
 console.log(this.userid);
 this.getuserdata(this.userid);
 
+this.getBlogPosts(this.userid);
+
 }
 
     
