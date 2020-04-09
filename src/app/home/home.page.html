@@ -59,19 +59,19 @@
 
 
 	<ion-card>
-		<ion-item href="#" [routerLink]="['/profile']" class="ion-activated">
+		<ion-item [routerLink]="['/profile']" class="ion-activated">
 			<ion-icon name="wifi" slot="start"></ion-icon>
 			<ion-label>Go to profile</ion-label>
 		</ion-item>
 
-		<ion-item href="#" [routerLink]="['/publicprofile']" >
+		<ion-item [routerLink]="['/publicprofile']" >
 			<ion-icon name="wine" slot="start"></ion-icon>
-			<ion-label>Card Link Item 2</ion-label>
+			<ion-label>Puplicprofile</ion-label>
 		</ion-item>
 
-		<ion-item (click)="infinitload()"  class="ion-activated">
+		<ion-item [routerLink]="['/chats']"  class="ion-activated">
 			<ion-icon name="warning" slot="start"></ion-icon>
-			<ion-label>Load more items</ion-label>
+			<ion-label>Chats</ion-label>
 		</ion-item>
 
 		<ion-item>
