@@ -30,7 +30,7 @@ export class AppComponent {
         if(user){
           this.router.navigate(["/home"]);
         } else {
-          this.router.navigate(["/login"]);
+          //this.router.navigate(["/login"]);
         }
       }, err => {
         this.router.navigate(["/login"]);
