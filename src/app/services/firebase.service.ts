@@ -180,7 +180,7 @@ getUserBlogs(userid) {
 return this.afs.collection('blogs', ref =>
       ref
         .orderBy('crtd', 'desc')
-        .where('userid', '==', userid)
+        .where('byuser', '==', userid)
         .limit(110)
     );
 
