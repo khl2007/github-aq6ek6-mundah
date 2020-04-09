@@ -11,10 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./publicprofile.page.scss'],
 })
 export class PublicprofilePage implements OnInit {
-
+const userid : string ;
   constructor(private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+
+     this.userid = this.route.snapshot.params['buserid'];
+
   }
 
 }
