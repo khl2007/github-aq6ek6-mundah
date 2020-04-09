@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { flatMap, map } from "rxjs/operators";
+
 import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
