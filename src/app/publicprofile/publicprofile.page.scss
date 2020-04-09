@@ -1,5 +1,5 @@
 ion-content {
-    --background: url(../../../../img/assets/profilebg.jpg) no-repeat top center/cover fixed, #fff;
+    --background: url(../../assets/img/profilebg.jpg) no-repeat top center/cover fixed, #fff;
    
 
     ion-button {
@@ -21,7 +21,7 @@ ion-chip {
     margin: 0 auto;
 
     .header {
-        height: 200px; // 20vh;
+        
 
         .avatar {
             width: 160px; //40vw
@@ -44,7 +44,7 @@ ion-chip {
 .card-body {
     background-color: #ffffff;
     padding: 30px;
-    height: calc(100vh - (200px + 56px));
+   
     overflow: hidden;
 
     .user-meta {
