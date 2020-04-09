@@ -1,11 +1,41 @@
-<ion-header>
+<ion-header translucent no-border>
   <ion-toolbar>
-    <ion-title>publicprofile</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="light">
+        <ion-icon slot="start" name="ios-arrow-back"></ion-icon>
+        Favorites
+      </ion-button>
+    </ion-buttons>
+    <ion-title>&nbsp;</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" src="{{userData.avatar}}"></ion-icon>
+       </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true" slot="fixed" >
+    <div class="card">
+      <div class="header">
+        <div class="avatar">
+          <img [src]="userData.avtar" alt="">
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="user-meta ion-text-center">
+          <h3 class="playername"> {{userData.displayName}} </h3>
+          <h5 class="country">Switzerland</h5>
+          <h6 class="ranking">Current ranking: <ion-chip>
+              <ion-label>2</ion-label>
+            </ion-chip>
+          </h6>
+        </div>
 
-<h1 class="entry-title">{{userData.displayName}}</h1>
+        <ion-button expand="full" color="primary">http://rogerfederer.com</ion-button>
+        <ion-button expand="full" color="secondary">@RogerFederer on Twitter</ion-button>
+        <ion-button expand="full" color="secondary">View profile at ATP</ion-button>
 
+      </div>
+    </div>
 </ion-content>
