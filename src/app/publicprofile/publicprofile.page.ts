@@ -38,15 +38,7 @@ this.getuserdata();
 
    getuserdata(userid){
 
-this.firebaseService
-      .getUserInfo(userid)
-      .snapshotChanges()
-      .pipe(
-        map(changes =>
-          changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))
-        )
-      )
-      .subscribe(res => {
+this.firebaseService.getUserInfo(userid).valueChanges().subscribe(res => {
         this.userinfo = res;
       });
 
