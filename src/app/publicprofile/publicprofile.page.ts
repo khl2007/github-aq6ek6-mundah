@@ -23,7 +23,7 @@ const userid : string ;
 
 userData: User = new User();
 
-blogPost: Blogitem[] = [];
+blogPost: Observable<Blogitem[]>;;
 
 public like_btn = {
     color: "black",
