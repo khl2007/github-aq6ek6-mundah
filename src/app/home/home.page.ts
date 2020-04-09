@@ -54,7 +54,9 @@ export class HomePage implements OnInit {
 
   }
 
-infinitload(event){
+infinitload(){
+
+this.firebaseService.loadnextvals();
 
 }
 
