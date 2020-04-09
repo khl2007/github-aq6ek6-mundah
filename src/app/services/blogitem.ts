@@ -4,4 +4,5 @@ export class Blogitem {
   imgurl: string;
   byuser: string;
   likes: string;
+  crtd : any;
 }
