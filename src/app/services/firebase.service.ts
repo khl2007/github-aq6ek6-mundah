@@ -23,12 +23,11 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
 
   blogsRef: AngularFirestoreCollection<Blogitem>;
-  let startq : any;
-  let endq : any;
+ 
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-  let pagesize:'10';
-  let orderfield : 'crtd';
+  
+  
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
 
@@ -57,7 +56,7 @@ export class FirebaseService {
   }
 
   collectionInitialization() {
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy(this.orderfield, 'desc').limit(this.pagesize));
+    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(10));
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
@@ -68,44 +67,7 @@ export class FirebaseService {
           const blgimg = data.imgurl;
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
-          this.startq = c[0].payload.doc;
-          return this.afs
-            .doc("users/" + userid)
-            .valueChanges()
-            .pipe(
-              map((userData: User) => {
-                return Object.assign({
-                  blogrefid: blogid,
-                  buserid: userid,
-                  user: userData.displayName,
-                  useravtar: userData.avatar,
-                  body: blgbody,
-                  bimgurl: blgimg,
-                  crtd: blogcrtd,
-                  likes: bloglikes
-                });
-              })
-            );
-        });
-      }),
-      flatMap(feeds => combineLatest(feeds))
-    );
-  }
-
-
-loadmoredata() {
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy(this.orderfield, 'desc').limit(this.pagesize).startAt(this.start));
-    this.feedItem = this.blogsRef.snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(c => {
-          const data = c.payload.doc.data();
-          const blogid = c.payload.doc.id;
-          const userid = data.byuser;
-          const blgbody = data.body;
-          const blgimg = data.imgurl;
-          const bloglikes = data.likes;
-          const blogcrtd = data.crtd;
-          this.startq = c[0].payload.doc;
+          //this.startq = c[0].payload.doc;
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
