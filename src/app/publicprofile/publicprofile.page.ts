@@ -14,7 +14,7 @@ export class PublicprofilePage implements OnInit {
 const userid : string ;
 userinfo : any;
 userposts : any;
-  constructor(private route: ActivatedRoute,private router: Router) { }
+  constructor(private route: ActivatedRoute,private router: Router , private firebaseService: FirebaseService) { }
 
   ngOnInit() {
 if(this.route.snapshot.params['buserid']){
@@ -45,6 +45,8 @@ this.firebaseService
       .subscribe(res => {
         this.userinfo = res;
       });
+
+console.log(this.userinfo);
 
    }
 
