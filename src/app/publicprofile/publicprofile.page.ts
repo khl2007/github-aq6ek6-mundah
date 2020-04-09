@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
+import { Blogitem } from "./blogitem";
+
 import { flatMap, map } from "rxjs/operators";
 
 import { FirebaseService } from '../services/firebase.service';
@@ -16,8 +18,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PublicprofilePage implements OnInit {
 const userid : string ;
-userinfo : any;
-userposts : any;
+
+userData: User = new User();
+
+blogPost: Blogitem[] = [];
+
   constructor(private route: ActivatedRoute,private router: Router , private firebaseService: FirebaseService) { }
 
   ngOnInit() {
@@ -26,7 +31,7 @@ if(this.route.snapshot.params['buserid']){
 this.userid = this.route.snapshot.params['buserid'];
 
 console.log(this.userid);
-this.getuserdata();
+this.getuserdata(this.userid);
 
 }
 
@@ -38,12 +43,25 @@ this.getuserdata();
 
    getuserdata(userid){
 
-this.firebaseService.getUserInfo(userid).valueChanges().subscribe(res => {
-        this.userinfo = res;
-      });
 
-console.log(this.userinfo);
+this.firebaseService.getUserInfo(userid).subscribe(
+        (result: User) => {
+          this.userData = result;
+        }
+      );
+
+console.log(this.userData);
 
    }
+
+getBlogPosts(userid) {
+    this.firebaseService.getUserBlogs(userid).subscribe(result => {
+        this.blogPost = result;
+      });
+
+console.log(this.blogPost);
+
+  }
+
 
 }
