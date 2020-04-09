@@ -27,7 +27,7 @@
         <div class="user-meta ion-text-center">
           <h3 class="playername"> {{userData.displayName}} </h3>
           <h5 class="country">  {{userData.email}}  </h5>
-          <h6 class="ranking">Current ranking: <ion-chip>
+          <h6 class="ranking">   {{userData.avatar}}   <ion-chip>
               <ion-label>2</ion-label>
             </ion-chip>
           </h6>
@@ -39,4 +39,7 @@
 
       </div>
     </div>
+
+<img [src]="userData.avtar">
+
 </ion-content>
