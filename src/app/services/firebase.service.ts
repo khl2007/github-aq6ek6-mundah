@@ -168,24 +168,27 @@ loadnextvals() {
     console.log("service function caled ");
   }
 
-  getUserInfo(userid) {
+  getUserInfo(userid: string) : Observable<User>{
     //let currentUser = firebase.auth().currentUser;
 
-    this.userDoc = this.afs.doc<User>("users/" + userid);
+    this.userDoc = this.afs.doc<User>("users/" + userid).valueChanges();
     return this.userDoc;
   }
 
-getUserBlogs(userid) {
+getUserBlogs(userid: string) : Observable<Blogitem[]>{
 
-return this.afs.collection('blogs', ref =>
-      ref
-        .orderBy('crtd', 'desc')
-        .where('byuser', '==', userid)
-        .limit(110)
-    );
+const blogs = this.db.collection<Blogitem >('blogs', ref => ref.orderBy('crtd', 'desc').where('byuser', '==', userid)).snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(
+          c => ({
+            key: c.payload.doc.id,
+            ...c.payload.doc.data()
+          }));
+      }));
+    return blogs;
+}
 
-   
-  }
+
 
   getTask(taskId) {
     return new Promise<any>((resolve, reject) => {
