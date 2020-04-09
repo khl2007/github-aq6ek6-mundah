@@ -70,7 +70,7 @@ this.firebaseService.loadnextvals();
       // and disable the infinite scroll
      /* if (data.length == 1000) {
         event.target.disabled = true;
-      }/*
+      }*/
     }, 500);
 
 
