@@ -54,6 +54,9 @@ export class HomePage implements OnInit {
 
   }
 
+infinitload(event){
+
+}
 
   async getData() {
     const loading = await this.loadingCtrl.create({
