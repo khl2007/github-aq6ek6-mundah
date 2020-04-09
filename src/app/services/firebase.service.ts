@@ -22,13 +22,13 @@ import { User } from "./user";
 export class FirebaseService {
   private snapshotChangesSubscription: any;
 
-  blogsRef: AngularFirestoreCollection<Blogitem> = null;
-  v startq : any;
+  blogsRef: AngularFirestoreCollection<Blogitem>;
+  let startq : any;
   let endq : any;
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-  let pagesize= 10;
-  let orderfield ="crtd";
+  let pagesize:'10';
+  let orderfield : 'crtd';
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
 
@@ -93,7 +93,7 @@ export class FirebaseService {
   }
 
 
-loadmoredata {
+loadmoredata() {
     this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy(this.orderfield, 'desc').limit(this.pagesize).startAt(this.start));
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
