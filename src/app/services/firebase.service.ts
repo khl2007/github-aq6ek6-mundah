@@ -56,7 +56,7 @@ export class FirebaseService {
   }
 
   collectionInitialization() {
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc'));
+    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(10));
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
