@@ -144,7 +144,7 @@ loadnextvals() {
 
   sellectAllNews() {
 
-x = undefined;
+let x = null;
 
     this.collectionInitialization(x);
 
