@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Blogitem } from "./blogitem";
+import { Blogitem } from "../services/blogitem";
 
-import { User } from "./user";
+import { User } from "../services/user";
 
 import { flatMap, map } from "rxjs/operators";
 
