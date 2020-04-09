@@ -92,8 +92,8 @@ export class FirebaseService {
     );
   }
 
-loadnextvals() {
-   
+loadnextvals(event) {
+   this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').startAfter(lastVisible).limit(10));
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
