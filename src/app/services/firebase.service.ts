@@ -92,6 +92,44 @@ export class FirebaseService {
     );
   }
 
+loadnextvals() {
+   
+    this.feedItem = this.blogsRef.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(c => {
+          this.lastVisible = c.payload.doc[c.payload.doc.length-1];
+          const data = c.payload.doc.data();
+          const blogid = c.payload.doc.id;
+          const userid = data.byuser;
+          const blgbody = data.body;
+          const blgimg = data.imgurl;
+          const bloglikes = data.likes;
+          const blogcrtd = data.crtd;
+          //this.startq = c[0].payload.doc;
+          return this.afs
+            .doc("users/" + userid)
+            .valueChanges()
+            .pipe(
+              map((userData: User) => {
+                return Object.assign({
+                  blogrefid: blogid,
+                  buserid: userid,
+                  user: userData.displayName,
+                  useravtar: userData.avatar,
+                  body: blgbody,
+                  bimgurl: blgimg,
+                  crtd: blogcrtd,
+                  likes: bloglikes
+                });
+              })
+            );
+        });
+      }),
+      flatMap(feeds => combineLatest(feeds))
+    );
+  }
+
+
 
   sellectAllNews() {
     this.collectionInitialization();
