@@ -26,7 +26,7 @@ export class FirebaseService {
  
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-  lastVisible : any;
+  private lastVisible : any;
   
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
