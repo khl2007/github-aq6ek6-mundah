@@ -48,8 +48,8 @@ items: Array<any>;
       this.getData();
     }
     //this.getBlogs();
-    this.getCrtusertest();
-    this.getCrtusertestt();
+    //this.getCrtusertest();
+    //this.getCrtusertestt();
     //this.postfeed= this.firebaseService.sellectAllNews();
     this.firebaseService.sellectAllNews().subscribe(res => {
    console.log(res);
