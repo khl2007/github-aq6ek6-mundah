@@ -156,6 +156,12 @@ let x = null;
     // return result;
     return this.feedItem;
   }
+
+sellectUserNews(userid) {
+    this.collectionInitialization(userid);
+    return this.feedItem;
+  }
+
   getUserId(){
   
   return  firebase.auth().currentUser.uid;
