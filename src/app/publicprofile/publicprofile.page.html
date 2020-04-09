@@ -43,16 +43,16 @@
       </div>
     </div>
 
-<ion-card *ngFor="let blog of blogData " >
+	<ion-card *ngFor="let blog of postfeed " >
 		<ion-item>
-			<ion-avatar item-left [routerLink]="['/publicprofile', userData.userid]" >
-				<img [src]="userData.useravtar">
+			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
+				<img [src]="blog.useravtar">
         </ion-avatar>
-				<ion-label><a [routerLink]="['/publicprofile', userData.userid]" > {{userData.displayName}} </a> </ion-label>
-				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.key]">View</ion-button>
+				<ion-label><a [routerLink]="['/publicprofile', blog.buserid]" > {{blog.user}} </a> </ion-label>
+				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.blogrefid]">View</ion-button>
 		</ion-item>
 
-		<img *ngIf="blog.imgurl" [src]="blog.imgurl" (tap)="tapPhotoLike($event)">
+		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">
 
 
 		<ion-item>
@@ -75,7 +75,7 @@
 			<p class="like-content">
 				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
 			</p>
-			<p><b> {{userData.displayName}} </b> {{blog.body}} </p>
+			<p><b> {{blog.user}} </b> {{blog.body}} </p>
 
 			<ion-note style="font-size: 12px">
 				{{blog.crtd * 1000 | date:'MM-dd-yyyy'}}
