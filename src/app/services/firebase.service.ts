@@ -26,7 +26,8 @@ export class FirebaseService {
 
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-
+  let pagesize= 10;
+  let orderfield ="crtd";
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
 
@@ -55,7 +56,7 @@ export class FirebaseService {
   }
 
   collectionInitialization() {
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy('crtd', 'desc'));
+    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy(this.orderfield, 'desc').limit(this.pagesize));
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
