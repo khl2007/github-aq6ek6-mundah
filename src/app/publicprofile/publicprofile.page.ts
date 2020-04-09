@@ -19,6 +19,7 @@ const userid : string ;
      this.userid = this.route.snapshot.params['buserid'];
 
 console.log(this.userid);
+//getUserInfo
 
   }
 
