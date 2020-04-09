@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../../services/firebase.service';
-import { AuthService } from '../../services/auth.service';
+import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
