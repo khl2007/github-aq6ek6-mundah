@@ -168,11 +168,23 @@ loadnextvals() {
     console.log("service function caled ");
   }
 
-  getUserInfo() {
-    let currentUser = firebase.auth().currentUser;
+  getUserInfo(userid) {
+    //let currentUser = firebase.auth().currentUser;
 
-    this.userDoc = this.afs.doc<User>("users/" + currentUser.uid);
+    this.userDoc = this.afs.doc<User>("users/" + userid);
     return this.userDoc;
+  }
+
+getUserBlogs(userid) {
+
+return this.afs.collection('blogs', ref =>
+      ref
+        .orderBy('crtd', 'desc')
+        .where('userid', '==', userid)
+        .limit(110)
+    );
+
+   
   }
 
   getTask(taskId) {
