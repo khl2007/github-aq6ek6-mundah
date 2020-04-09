@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { Blogitem } from "./blogitem";
 
+import { User } from "./user";
+
 import { flatMap, map } from "rxjs/operators";
 
 import { FirebaseService } from '../services/firebase.service';
