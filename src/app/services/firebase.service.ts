@@ -177,7 +177,7 @@ loadnextvals() {
 
 getUserBlogs(userid: string) : Observable<Blogitem[]>{
 
-const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 'desc').where('byuser', '==', userid)).snapshotChanges().pipe(
+const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 'desc')).snapshotChanges().pipe(
       map(actions => {
         return actions.map(
           c => ({
