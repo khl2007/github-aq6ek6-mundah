@@ -15,13 +15,7 @@ const userid : string ;
   constructor(private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-If (this.route.snapshot.params['buserid']){
 
-this.userid = this.route.snapshot.params['buserid'];
-
-console.log(this.userid);
-
-} 
     
 
 //getUserInfo
