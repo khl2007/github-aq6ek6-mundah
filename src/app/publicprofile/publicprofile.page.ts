@@ -12,6 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PublicprofilePage implements OnInit {
 const userid : string ;
+userinfo : any;
+userposts : any;
   constructor(private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
@@ -20,6 +22,7 @@ if(this.route.snapshot.params['buserid']){
 this.userid = this.route.snapshot.params['buserid'];
 
 console.log(this.userid);
+this.getuserdata();
 
 }
 
@@ -28,5 +31,21 @@ console.log(this.userid);
 //getUserInfo
 
   }
+
+   getuserdata(userid){
+
+this.firebaseService
+      .getUserInfo(userid)
+      .snapshotChanges()
+      .pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))
+        )
+      )
+      .subscribe(res => {
+        this.userinfo = res;
+      });
+
+   }
 
 }
