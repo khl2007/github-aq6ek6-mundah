@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
 import { flatMap, map } from "rxjs/operators";
 
 import { FirebaseService } from '../services/firebase.service';
