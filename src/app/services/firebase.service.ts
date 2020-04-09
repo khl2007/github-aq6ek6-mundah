@@ -143,7 +143,10 @@ loadnextvals() {
 
 
   sellectAllNews() {
-    this.collectionInitialization();
+
+x = undefined;
+
+    this.collectionInitialization(x);
 
     /*this.feedItem.forEach(value => {
   console.log(value);
