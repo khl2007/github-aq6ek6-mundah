@@ -26,7 +26,7 @@ export class FirebaseService {
  
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-  
+  lastVisible : any;
   
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
@@ -60,6 +60,7 @@ export class FirebaseService {
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
+          this.lastVisible = c.payload.doc[c.payload.doc.length-1];
           const data = c.payload.doc.data();
           const blogid = c.payload.doc.id;
           const userid = data.byuser;
