@@ -25,14 +25,19 @@ export class ChatsPage implements OnInit {
 
 chats: any;
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(public loadingCtrl: LoadingController,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private firebaseService: FirebaseService,
+    private animationCtrl: AnimationController) { }
 
   ngOnInit() {
 
     this.firebaseService.getChats().subscribe(res => {
       console.log(res);
-
-    }); ;
+    this.chats = res;
+    }); 
   }
 
  

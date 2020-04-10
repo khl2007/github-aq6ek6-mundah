@@ -210,7 +210,7 @@ getChats() {
   // let currentUser = firebase.auth().currentUser.uid;
    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
    let chats : any;
-   this.chatref = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
+   this.chatref = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(10));
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
 
