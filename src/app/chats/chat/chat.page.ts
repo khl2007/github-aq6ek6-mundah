@@ -1,5 +1,5 @@
 import { Component, OnInit , ViewChild } from "@angular/core";
-import { AuthService } from "../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 import { LoadingController } from "@ionic/angular";
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -13,7 +13,7 @@ import { map } from "rxjs/operators";
 
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { FirebaseService } from "../services/firebase.service";
+import { FirebaseService } from "../../services/firebase.service";
 import { Blogitem } from "../../services/blogitem";
 
 import { User } from "../../services/user";
@@ -38,7 +38,7 @@ chats: any;
 
      if(this.route.snapshot.params['userid']){
 
-       this.userid = this.route.snapshot.params['buserid'];
+       this.userid = this.route.snapshot.params['userid'];
 
         console.log(this.userid);
         this.getuserdata(this.userid);
