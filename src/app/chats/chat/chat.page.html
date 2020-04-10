@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content>
-
+Loged in user {{userid}}
 <h2 *ngFor="let chat of chats " >{{chat.msg}}</h2>
 
    <ion-card *ngFor="let chat of chats ">
       <ion-item  *ngIf="chat.sender === userid; else elseBlock" >Me </ion-item> 
       <ng-template #elseBlock>
-     <ion-item >My friend</ion-item>
+     <ion-item >My friend : {{chat.sender}} </ion-item>
        </ng-template> 
      <ion-card-content>
 
