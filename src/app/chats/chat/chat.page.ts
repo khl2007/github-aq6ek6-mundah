@@ -11,6 +11,8 @@ import { Observable } from "rxjs";
 
 import { map } from "rxjs/operators";
 
+import { ActivatedRoute, Router } from "@angular/router";
+
 import { FirebaseService } from "../services/firebase.service";
 import { Blogitem } from "../services/blogitem";
 
@@ -34,10 +36,26 @@ chats: any;
 
   ngOnInit() {
 
-    this.firebaseService.getChats().subscribe(res => {
-      console.log(res);
-    this.chats = res;
-    }); 
+     if(this.route.snapshot.params['buserid']){
+
+       this.userid = this.route.snapshot.params['buserid'];
+
+        console.log(this.userid);
+        this.getuserdata(this.userid);
+
+         this.firebaseService.getChats().subscribe(res => {
+         console.log(res);
+         this.chats = res;
+          }); 
+
+           }
+
+
+    
+  }
+
+initChat() {
+   
   }
 
  
