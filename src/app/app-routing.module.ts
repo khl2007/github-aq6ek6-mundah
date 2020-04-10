@@ -37,6 +37,10 @@ const routes: Routes = [
     path: "welcome",
     loadChildren: "./welcome/welcome.module#WelcomePageModule"
   },
+  {
+    path: 'myprofile',
+    loadChildren: () => import('./myprofile/myprofile.module').then( m => m.MyprofilePageModule)
+  },
   // { path: 'new-task-modal', loadChildren: './new-task-modal/new-task-modal.module#NewTaskModalPageModule' },
 ];
 
