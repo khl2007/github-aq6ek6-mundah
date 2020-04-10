@@ -23,7 +23,10 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
 
   blogsRef: AngularFirestoreCollection<Blogitem>;
- 
+  chatref :  AngularFirestoreCollection<any>;
+
+  userchats : Observable<any[]>;
+
   feedItem: Observable<Feed[]>;
   feeditems: any[];
   private lastVisible : any;
@@ -33,7 +36,7 @@ export class FirebaseService {
 
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
     //this.userDocc = this.afs.collection("/users");
-
+//this.getChats();
    // this.blogsRef = this.afs.collection("/blogs");
   }
 
@@ -202,23 +205,14 @@ const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 
       }));
     return blogs;
 }
-getChats(userid) {
+getChats() {
   //get the loged in user id
   // let currentUser = firebase.auth().currentUser.uid;
    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
    let chats : any;
-   this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
-    chats = this.blogsRef.snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(c => {
-          
-         // this.lastVisible = c[0].payload.doc;
-          const data = c.payload.doc.data();
-          const blogid = c.payload.doc.id;
-          console.log(data);
-        });
-      })
-    );
+   this.chatref = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
+    this.userchats = this.chatref.valueChanges();
+    return this.userchats;
 
   }
 

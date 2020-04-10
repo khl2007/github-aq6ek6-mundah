@@ -59,10 +59,7 @@ items: Array<any>;
     //this.getCrtusertest();
     //this.getCrtusertestt();
     //this.postfeed= this.firebaseService.sellectAllNews();
-    this.firebaseService.sellectAllNews().subscribe(res => {
-   console.log(res);
-   this.postfeed = res;
-});
+   
 
   }
 
@@ -89,13 +86,12 @@ this.firebaseService.loadnextvals();
       message: "Please wait..."
     });
     this.presentLoading(loading);
-
-    this.route.data.subscribe(routeData => {
-      routeData["data"].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-      });
-    });
+      this.firebaseService.sellectAllNews().subscribe(res => {
+  // console.log(res);
+    loading.dismiss();
+   this.postfeed = res;
+   });
+   
   }
   getCrtusertest() {
    // this.crtuser = this.firebaseService.getUserInfo().valueChanges();

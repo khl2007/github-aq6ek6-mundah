@@ -23,9 +23,16 @@ import { User } from "../services/user";
 })
 export class ChatsPage implements OnInit {
 
+chats: any;
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+
+    this.firebaseService.getChats().subscribe(res => {
+      console.log(res);
+
+    }); ;
   }
 
  
