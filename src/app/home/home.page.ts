@@ -22,7 +22,7 @@ import { User } from "../services/user";
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  //@ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
 items: Array<any>;
   crtusertest: Observable<User>;
@@ -46,12 +46,7 @@ items: Array<any>;
     private animationCtrl: AnimationController
   ) {
 
-this.animationCtrl.create()
-  .addElement(document.querySelector('img'))
-  .duration(1500)
-  .iterations(Infinity)
-  .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
-  .fromTo('opacity', '1', '0.2');
+
 
 
     }
@@ -103,7 +98,7 @@ this.firebaseService.loadnextvals();
     });
   }
   getCrtusertest() {
-    this.crtuser = this.firebaseService.getUserInfo().valueChanges();
+   // this.crtuser = this.firebaseService.getUserInfo().valueChanges();
   }
 
   getCrtusertestt() {
@@ -165,12 +160,12 @@ this.firebaseService.loadnextvals();
 
     if (event.direction === 2) {
       // Swipe Right
-      this.goMessages();
+      //this.goMessages();
     }
   }
 
   scrollToTop() {
-    this.content.scrollToTop();
+    //this.content.scrollToTop();
   }
 
   logout() {
