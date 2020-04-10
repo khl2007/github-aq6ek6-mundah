@@ -19,7 +19,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./publicprofile.page.scss'],
 })
 export class PublicprofilePage implements OnInit {
-const userid : string ;
+userid : string;
 
 userData: User = new User();
 
@@ -72,7 +72,7 @@ this.firebaseService.sellectUserNews(userid).subscribe(res => {
    console.log(res);
    this.postfeed = res;
 });
-console.log(this.blogPost);
+//console.log(this.blogPost);
 
   }
 
@@ -103,12 +103,12 @@ console.log(this.blogPost);
 
     if (event.direction === 2) {
       // Swipe Right
-      this.goMessages();
+      //this.goMessages();
     }
   }
 
   scrollToTop() {
-    this.content.scrollToTop();
+    //this.content.scrollToTop();
   }
 
 }
