@@ -9,7 +9,7 @@
 <h2 *ngFor="let chat of chats " >{{chat.msg}}</h2>
 
    <ion-card *ngFor="let chat of chats ">
-      <ion-item  *ngIf="blog.sender === userid; else elseBlock" >Me </ion-item> 
+      <ion-item  *ngIf="chat.sender === userid; else elseBlock" >Me </ion-item> 
       <ion-item #elseBlock >My friend</ion-item> 
      <ion-card-content>
 
