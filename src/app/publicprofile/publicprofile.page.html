@@ -1,12 +1,9 @@
 <ion-header translucent no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="light">
-        <ion-icon slot="start" name="ios-arrow-back"></ion-icon>
-        Favorites
-      </ion-button>
+       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>&nbsp;</ion-title>
+    <ion-title></ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon slot="icon-only" src="*"></ion-icon>
@@ -20,7 +17,7 @@
       <div class="header">
         <div class="">
          <ion-avatar >
-	<img [src]="userData.avtar">
+	<img [src]="{{userData.avtar}}">
         </ion-avatar>
           
         </div>
