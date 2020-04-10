@@ -40,7 +40,7 @@ userid : any;
        this.userid = this.route.snapshot.params['userid'];
 
         console.log(this.userid);
-        this.getuserdata(this.userid);
+        
 
          this.firebaseService.getChats().subscribe(res => {
          console.log(res);
