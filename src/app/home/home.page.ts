@@ -3,6 +3,8 @@ import { AuthService } from "../services/auth.service";
 import { LoadingController } from "@ionic/angular";
 import { Router, ActivatedRoute } from "@angular/router";
 
+import { Animation, AnimationController } from '@ionic/angular';
+
 import { IonInfiniteScroll } from '@ionic/angular';
 
 import { Observable } from "rxjs";
@@ -40,8 +42,19 @@ items: Array<any>;
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private firebaseService: FirebaseService
-  ) {}
+    private firebaseService: FirebaseService,
+    private animationCtrl: AnimationController
+  ) {
+
+this.animationCtrl.create()
+  .addElement(document.querySelector('img'))
+  .duration(1500)
+  .iterations(Infinity)
+  .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+  .fromTo('opacity', '1', '0.2');
+
+
+    }
 
   ngOnInit() {
     if (this.route && this.route.data) {
