@@ -51,6 +51,7 @@ export class FirebaseService {
       });
     });
   }
+  
   getBlogs() {
     return this.afs.collection("/blogs");
   }
@@ -201,7 +202,25 @@ const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 
       }));
     return blogs;
 }
+getChats(userid) {
+  //get the loged in user id
+  // let currentUser = firebase.auth().currentUser.uid;
+   //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
+   let chats : any;
+   this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
+    chats = this.blogsRef.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(c => {
+          
+         // this.lastVisible = c[0].payload.doc;
+          const data = c.payload.doc.data();
+          const blogid = c.payload.doc.id;
+          console.log(data);
+        });
+      })
+    );
 
+  }
 
 
   getTask(taskId) {
@@ -263,6 +282,7 @@ const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 
         .then(res => resolve(res), err => reject(err));
     });
   }
+
 
   encodeImageUri(imageUri, callback) {
     var c = document.createElement("canvas");
