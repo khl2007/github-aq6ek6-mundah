@@ -24,8 +24,12 @@ import { User } from "../../services/user";
 })
 export class ChatPage implements OnInit {
 
+userData: User = new User();
+
 chats: any;
 userid : any;
+curentuserid : any;
+
   constructor(public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
@@ -38,9 +42,9 @@ userid : any;
      if(this.route.snapshot.params['userid']){
 
        this.userid = this.route.snapshot.params['userid'];
-
+       this.curentuserid = this.firebaseService.getUserId();
         console.log(this.userid);
-        
+        this.getuserdata(this.userid);
 
          this.firebaseService.getChats().subscribe(res => {
          console.log(res);
@@ -56,6 +60,20 @@ userid : any;
 initChat() {
    
   }
+
+    getuserdata(userid){
+
+
+      this.firebaseService.getUserInfo(userid).subscribe(
+        (result: User) => {
+          this.userData = result;
+        }
+      );
+
+    //console.log(this.userData);
+
+   }
+   
 
  
 }
