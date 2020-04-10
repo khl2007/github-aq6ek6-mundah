@@ -22,26 +22,26 @@
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
 				<img [src]="blog.useravtar">
         </ion-avatar>
-				<ion-label><a [routerLink]="['/publicprofile', blog.buserid]" > {{blog.user}} </a> </ion-label>
+				<ion-label><a [routerLink]="['/publicprofile', blog.buserid]" > <strong>{{blog.user}}</strong> </a> </ion-label>
 				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.blogrefid]">View</ion-button>
 		</ion-item>
 
-		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">
+		<ion-img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)"></ion-img>
 
 
 		<ion-item>
-			<ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
+			<ion-button fill="clear" clear ion-button icon-only (click)="likeButton()" class="like-btn">
 				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
 				</ion-icon>
 			</ion-button>
-			<ion-button fill="outline" ion-button icon-only>
+			<ion-button fill="clear" ion-button icon-only>
 				<ion-icon name="chatbubble-outline"></ion-icon>
 			</ion-button>
-			<ion-button fill="outline" ion-button icon-only>
+			<ion-button fill="clear" ion-button icon-only>
 				<ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
 			</ion-button>
-			<ion-button fill="outline" no-margin no-padding clear color="black" icon-only style="float: right">
-				<ion-icon name="ios-bookmark-outline"></ion-icon>
+			<ion-button fill="clear" no-margin no-padding clear color="black" icon-only style="float: right">
+				<ion-icon name="bookmark-outline"></ion-icon>
 			</ion-button>
 		</ion-item>
 
