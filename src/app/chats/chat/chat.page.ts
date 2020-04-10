@@ -11,7 +11,6 @@ import { Observable } from "rxjs";
 
 import { map } from "rxjs/operators";
 
-import { ActivatedRoute, Router } from "@angular/router";
 
 import { FirebaseService } from "../../services/firebase.service";
 import { Blogitem } from "../../services/blogitem";
