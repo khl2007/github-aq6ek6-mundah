@@ -15,9 +15,9 @@
 <ion-content>
     <div class="card">
       <div class="header">
-        <div class="">
+        <div class="avatar">
          <ion-avatar >
-	<img [src]="userData.avtar">
+	<img [src]="userData.avatar">
         </ion-avatar>
           
         </div>
@@ -45,7 +45,7 @@
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
 				<img [src]="blog.useravtar">
         </ion-avatar>
-				<ion-label><a [routerLink]="['/publicprofile', blog.buserid]" > {{blog.user}} </a> </ion-label>
+				<ion-label> {{blog.user}} </a> </ion-label>
 				<ion-button fill="outline" slot="end" [routerLink]="['/details', blog.blogrefid]">View</ion-button>
 		</ion-item>
 
