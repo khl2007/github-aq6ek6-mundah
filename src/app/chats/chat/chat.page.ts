@@ -36,7 +36,7 @@ chats: any;
 
   ngOnInit() {
 
-     if(this.route.snapshot.params['buserid']){
+     if(this.route.snapshot.params['userid']){
 
        this.userid = this.route.snapshot.params['buserid'];
 
