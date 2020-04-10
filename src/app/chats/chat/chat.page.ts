@@ -26,7 +26,7 @@ import { User } from "../../services/user";
 export class ChatPage implements OnInit {
 
 chats: any;
-
+userid : any;
   constructor(public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
