@@ -6,4 +6,16 @@
 
 <ion-content>
 
+<h2 *ngFor="let chat of chats " >{{chat.msg}}</h2>
+
+   <ion-card *ngFor="let chat of chats ">
+      <ion-item [ngIf]="chat." >Me <ion-item> 
+      <ion-item>My friend<ion-item> 
+     <ion-card-content>
+
+          {{chat.msg}}
+
+     </ion-card-content>
+   </ion-card>
+
 </ion-content>
