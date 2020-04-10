@@ -14,9 +14,9 @@ import { map } from "rxjs/operators";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { FirebaseService } from "../services/firebase.service";
-import { Blogitem } from "../services/blogitem";
+import { Blogitem } from "../../services/blogitem";
 
-import { User } from "../services/user";
+import { User } from "../../services/user";
 
 @Component({
   selector: 'app-chat',
