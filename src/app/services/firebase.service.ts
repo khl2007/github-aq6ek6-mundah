@@ -207,10 +207,11 @@ const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 
 }
 getChats() {
   //get the loged in user id
-  // let currentUser = firebase.auth().currentUser.uid;
+   let currentUser = firebase.auth().currentUser.uid;
    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
    let chats : any;
-   this.chatref = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(10));
+   let  "qjrcTo4JIXX9j8X7541rSBlowu73"
+   this.chatref = this.afs.collection("chats").doc(currentUser).collection("friends").doc(receverid).collection("msgs");
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
 
