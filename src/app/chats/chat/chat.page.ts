@@ -26,6 +26,8 @@ export class ChatPage implements OnInit {
 
 userData: User = new User();
 
+cruserData: User = new User();
+
 chats: any;
 userid : any;
 curentuserid : any;
@@ -43,11 +45,11 @@ curentuserid : any;
 
        this.userid = this.route.snapshot.params['userid'];
        this.curentuserid = this.firebaseService.getUserId();
-        console.log(this.userid);
+        //console.log(this.userid);
         this.getuserdata(this.userid);
 
-         this.firebaseService.getChats().subscribe(res => {
-         console.log(res);
+         this.firebaseService.getChats(this.userid).subscribe(res => {
+         //console.log(res);
          this.chats = res;
           }); 
 
@@ -67,6 +69,11 @@ initChat() {
       this.firebaseService.getUserInfo(userid).subscribe(
         (result: User) => {
           this.userData = result;
+        }
+      );
+      this.firebaseService.getUserInfo(this.curentuserid).subscribe(
+        (result: User) => {
+          this.cruserData = result;
         }
       );
 
