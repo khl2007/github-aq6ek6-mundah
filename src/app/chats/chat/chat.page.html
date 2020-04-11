@@ -1,12 +1,25 @@
-<ion-header>
+<ion-header translucent no-border>
   <ion-toolbar>
+    <ion-buttons slot="start">
+       <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+
+<ion-avatar>
+	<img [src]="userData.avatar">
+    </ion-avatar>
+
     <ion-title> {{userData.displayName}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" src="*"></ion-icon>
+       </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-<h2 *ngIf="!chats" >start a conversation by sending a msg</h2>
+<h3 *ngIf="!chats" >start a conversation by sending a msg</h3>
 
 <ion-item *ngFor="let chat of chats">
   <ion-chip *ngIf="chat.sender === curentuserid; else elseBlock" color> 
@@ -32,7 +45,7 @@
 <ion-footer ion-fixed>    
   <ion-toolbar class="no-border" color="white">        
     <ion-input [(ngModel)]="newmessage" placeholder="Write your message ..."></ion-input>  
-    <ion-buttons end>
+    <ion-buttons slot="end">
       <button ion-button (click)="addmessage()">
         <ion-icon name="send" color="primary"></ion-icon>
       </button>
