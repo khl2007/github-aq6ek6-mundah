@@ -3,7 +3,7 @@ import { AuthService } from "../../services/auth.service";
 import { LoadingController } from "@ionic/angular";
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { Animation, AnimationController } from '@ionic/angular';
+import { Animation, AnimationController  } from '@ionic/angular';
 
 import { IonInfiniteScroll } from '@ionic/angular';
 
@@ -63,6 +63,7 @@ curentuserid : any;
 
     addmessage() {
    this.firebaseService.addChat(this.newmessage ,this.userid);
+   this.newmessage= '';
       }
 
     getuserdata(userid){

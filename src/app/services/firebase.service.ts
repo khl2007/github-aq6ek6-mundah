@@ -166,7 +166,7 @@ export class FirebaseService {
       .doc(currentUser)
       .collection("friends")
       .doc(receverid)
-      .collection('msgs' , ref => rorderBy('createdat', 'desc'));
+      .collection('msgs' , ref => ref.orderBy('createdat', 'desc'));
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
   }
