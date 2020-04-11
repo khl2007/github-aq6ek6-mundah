@@ -22,12 +22,12 @@
 <h3 *ngIf="!chats" >start a conversation by sending a msg</h3>
 
 <ion-item *ngFor="let chat of chats">
-  <ion-chip *ngIf="chat.sender === curentuserid; else elseBlock" class="ion-float-right" > 
+  <ion-chip *ngIf="chat.sender === curentuserid; else elseBlock" class="ion-float-right" color="primary"> 
     <ion-label > {{chat.msg}} </ion-label>
   </ion-chip>
 
  <ng-template #elseBlock>
-    <ion-chip> 
+    <ion-chip class="ion-float-left"> 
     <ion-avatar>
 	<img [src]="userData.avatar">
     </ion-avatar>
@@ -38,8 +38,6 @@
 </ion-item>
 
 
-
-  
 
 </ion-content>
 <ion-footer ion-fixed>    
