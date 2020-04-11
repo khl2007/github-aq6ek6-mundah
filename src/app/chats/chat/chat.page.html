@@ -6,25 +6,27 @@
 
 <ion-content>
 
-<h2 *ngIf="chats" >start a conversation by sending a msg</h2>
+<h2 *ngIf="!chats" >start a conversation by sending a msg</h2>
 
-   <ion-card *ngFor="let chat of chats ">
-      <ion-item  *ngIf="chat.sender === curentuserid; else elseBlock" >
-       {{cruserData.displayName}}
-      </ion-item> 
+<ion-item *ngFor="let chat of chats">
+  <ion-chip *ngIf="chat.sender === curentuserid; else elseBlock" color> 
+    <ion-lapel> {{chat.msg}} </ion-lapel>
+  </ion-chip>
 
-      <ng-template #elseBlock>
-     <ion-item >         <ion-avatar >
+ <ng-template #elseBlock>
+    <ion-chip> 
+    <ion-avatar>
 	<img [src]="userData.avatar">
-        </ion-avatar>
-         {{userData.displayName}} </ion-item>
+    </ion-avatar>
+    <ion-lapel> {{chat.msg}} </ion-lapel>
+  </ion-chip>
        </ng-template> 
-     <ion-card-content>
 
-          {{chat.msg}}
+</ion-item>
 
-     </ion-card-content>
-   </ion-card>
+
+
+  
 
 </ion-content>
 <ion-footer ion-fixed>    
