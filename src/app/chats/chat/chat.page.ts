@@ -28,6 +28,8 @@ userData: User = new User();
 
 cruserData: User = new User();
 
+newmessage : any;
+
 chats: any;
 userid : any;
 curentuserid : any;
@@ -59,9 +61,9 @@ curentuserid : any;
     
   }
 
-addmessage() {
-   
-  }
+    addmessage() {
+   //this.firebaseService.addchat();
+      }
 
     getuserdata(userid){
 
