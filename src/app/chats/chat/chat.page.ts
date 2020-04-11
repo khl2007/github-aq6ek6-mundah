@@ -59,7 +59,7 @@ curentuserid : any;
     
   }
 
-initChat() {
+addmessage() {
    
   }
 
