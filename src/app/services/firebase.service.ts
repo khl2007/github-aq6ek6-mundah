@@ -23,21 +23,20 @@ export class FirebaseService {
   private snapshotChangesSubscription: any;
 
   blogsRef: AngularFirestoreCollection<Blogitem>;
-  chatref :  AngularFirestoreCollection<any>;
+  chatref: AngularFirestoreCollection<any>;
 
-  userchats : Observable<any[]>;
+  userchats: Observable<any[]>;
 
   feedItem: Observable<Feed[]>;
   feeditems: any[];
-  private lastVisible : any;
-  
+
   private userDoc: AngularFirestoreDocument<User>;
   private userDocc: AngularFirestoreCollection<User>;
 
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
     //this.userDocc = this.afs.collection("/users");
-//this.getChats();
-   // this.blogsRef = this.afs.collection("/blogs");
+    //this.getChats();
+    // this.blogsRef = this.afs.collection("/blogs");
   }
 
   getTasks() {
@@ -54,23 +53,29 @@ export class FirebaseService {
       });
     });
   }
-  
+
   getBlogs() {
     return this.afs.collection("/blogs");
   }
 
   collectionInitialization(userid) {
-    if (userid){
-     this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100).where('byuser', '==', userid));
+    if (userid) {
+      this.blogsRef = this.afs.collection("blogs", ref =>
+        ref
+          .orderBy("crtd", "desc")
+          .limit(100)
+          .where("byuser", "==", userid)
+      );
     } else {
-    this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').limit(100));
+      this.blogsRef = this.afs.collection("blogs", ref =>
+        ref.orderBy("crtd", "desc").limit(100)
+      );
     }
-   
+
     this.feedItem = this.blogsRef.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
-          
-         // this.lastVisible = c[0].payload.doc;
+          // this.lastVisible = c[0].payload.doc;
           const data = c.payload.doc.data();
           const blogid = c.payload.doc.id;
           const userid = data.byuser;
@@ -79,7 +84,7 @@ export class FirebaseService {
           const bloglikes = data.likes;
           const blogcrtd = data.crtd;
           //this.startq = c[0].payload.doc;
-          this.lastVisible = data.crtd;
+
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -102,53 +107,9 @@ export class FirebaseService {
       flatMap(feeds => combineLatest(feeds))
     );
   }
-
-loadnextvals() {
-   this.blogsRef = this.afs.collection('blogs', ref => ref.orderBy("crtd", 'desc').startAfter(this.lastVisible).limit(10));
-    this.feedItem = this.blogsRef.snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(c => {
-         
-
-//this.lastVisible = c[c.length - 1].payload.doc;
-
-          const data = c.payload.doc.data();
-          const blogid = c.payload.doc.id;
-          const userid =  data.byuser;
-          const blgbody = data.body;
-          const blgimg = data.imgurl;
-          const bloglikes = data.likes;
-          const blogcrtd = data.crtd;
-           this.lastVisible =data.crtd;
-          //this.startq = c[0].payload.doc;
-          return this.afs
-            .doc("users/" + userid)
-            .valueChanges()
-            .pipe(
-              map((userData: User) => {
-                return Object.assign({
-                  blogrefid: blogid,
-                  buserid: userid,
-                  user: userData.displayName,
-                  useravtar: userData.avatar,
-                  body: blgbody,
-                  bimgurl: blgimg,
-                  crtd: blogcrtd,
-                  likes: bloglikes
-                });
-              })
-            );
-        });
-      }),
-      flatMap(feeds => combineLatest(feeds))
-    );
-  }
-
-
 
   sellectAllNews() {
-
-let x = null;
+    let x = null;
 
     this.collectionInitialization(x);
 
@@ -161,92 +122,83 @@ let x = null;
     return this.feedItem;
   }
 
-sellectUserNews(userid) {
+  sellectUserNews(userid) {
     this.collectionInitialization(userid);
     return this.feedItem;
   }
 
-  getUserId(){
-  
-  return  firebase.auth().currentUser.uid;
-
+  getUserId() {
+    return firebase.auth().currentUser.uid;
   }
-  getTimeSamp(){
-   return firebase.firestore.FieldValue.serverTimestamp();
+  getTimeSamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
   }
 
-  getUserInfoo() {
-    let thetestuser: any;
-    let currentUser = firebase.auth().currentUser;
-    //return this.afs.doc<User>('users/' + currentUser.uid);
-    return this.afs
-      .collection("users")
-      .doc(currentUser.uid)
-      .snapshotChanges();
-    console.log("service function caled ");
-  }
-
-  getUserInfo(userid: string) : Observable<User>{
+  getUserInfo(userid: string): Observable<User> {
     //let currentUser = firebase.auth().currentUser;
 
-   const userDetails = this.afs.doc<User>("users/" + userid).valueChanges();
+    const userDetails = this.afs.doc<User>("users/" + userid).valueChanges();
     return userDetails;
   }
 
-getUserBlogs(userid: string) : Observable<Blogitem[]>{
-
-const blogs = this.afs.collection<Blogitem>('blogs', ref => ref.orderBy('crtd', 'desc')).snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(
-          c => ({
+  getUserBlogs(userid: string): Observable<Blogitem[]> {
+    const blogs = this.afs
+      .collection<Blogitem>("blogs", ref => ref.orderBy("crtd", "desc"))
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+          return actions.map(c => ({
             key: c.payload.doc.id,
             ...c.payload.doc.data()
           }));
-      }));
+        })
+      );
     return blogs;
-}
-getChats(receverid) {
-  //get the loged in user id
-   let currentUser = firebase.auth().currentUser.uid;
-   //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
-   let chats : any;
-   //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
-   this.chatref = this.afs.collection("chats").doc(currentUser).collection("friends").doc(receverid).collection("msgs");
+  }
+  getChats(receverid) {
+    //get the loged in user id
+    let currentUser = firebase.auth().currentUser.uid;
+    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
+    let chats: any;
+    //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
+    this.chatref = this.afs
+      .collection("chats")
+      .doc(currentUser)
+      .collection("friends")
+      .doc(receverid)
+      .collection('msgs' , ref => rorderBy('createdat', 'desc'));
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
-
   }
-  addChat(msg , receverid){
   
-
-return new Promise<any>((resolve, reject) => {
+  addChat(msg, receverid) {
+    return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser.uid;
-    let data = {
-      msg: msg,
-      sender: currentUser,
-      createdat: this.getTimeSamp()
-    }
+      let data = {
+        msg: msg,
+        sender: currentUser,
+        createdat: this.getTimeSamp()
+      };
 
- 
-  this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").add(data)
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      );
+      this.afs
+        .collection("chats")
+        .doc(currentUser)
+        .collection("friends")
+        .doc(receverid)
+        .collection("msgs")
+        .add(data)
+        .then(res => resolve(res), err => reject(err));
 
-  this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").add(data)
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      );
-
-
-});
-
-   
-
-
-   }
+      this.afs
+        .collection("chats")
+        .doc(receverid)
+        .collection("friends")
+        .doc(currentUser)
+        .collection("msgs")
+        .add(data)
+        .then(res => resolve(res), err => reject(err));
+    });
+  }
 
   getTask(taskId) {
     return new Promise<any>((resolve, reject) => {
@@ -278,7 +230,7 @@ return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs
         .collection("blogs")
-    
+
         .doc(taskKey)
         .set(value)
         .then(res => resolve(res), err => reject(err));
@@ -307,7 +259,6 @@ return new Promise<any>((resolve, reject) => {
         .then(res => resolve(res), err => reject(err));
     });
   }
-
 
   encodeImageUri(imageUri, callback) {
     var c = document.createElement("canvas");
