@@ -62,7 +62,7 @@ curentuserid : any;
   }
 
     addmessage() {
-   //this.firebaseService.addchat();
+   this.firebaseService.addChat(msg ,this.userid);
       }
 
     getuserdata(userid){
