@@ -210,7 +210,7 @@ getChats(receverid) {
    let currentUser = firebase.auth().currentUser.uid;
    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
    let chats : any;
-   /:let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
+   //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
    this.chatref = this.afs.collection("chats").doc(currentUser).collection("friends").doc(receverid).collection("msgs");
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
