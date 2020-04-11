@@ -216,7 +216,25 @@ getChats(receverid) {
     return this.userchats;
 
   }
+  addChat(){
 
+  let currentUser = firebase.auth().currentUser.uid;
+this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").set(msg)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+
+this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").set(msg)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+
+   
+
+
+   }
 
   getTask(taskId) {
     return new Promise<any>((resolve, reject) => {
