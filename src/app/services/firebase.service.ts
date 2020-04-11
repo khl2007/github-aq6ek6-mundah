@@ -216,16 +216,22 @@ getChats(receverid) {
     return this.userchats;
 
   }
-  addChat(){
+  addChat(msg ,senderid){
+
+    let data = {
+      msg: value.body,
+      sender: senderid,
+      createdat: this.firebaseService.getTimeSamp()
+    }
 
   let currentUser = firebase.auth().currentUser.uid;
-this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").set(msg)
+  this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").set(msg)
       .then(
         res => resolve(res),
         err => reject(err)
       );
 
-this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").set(msg)
+  this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").set(msg)
       .then(
         res => resolve(res),
         err => reject(err)
