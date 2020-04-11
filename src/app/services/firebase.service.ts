@@ -228,13 +228,13 @@ return new Promise<any>((resolve, reject) => {
     }
 
  
-  this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").add(msg)
+  this.afs.collection('chats').doc(currentUser).collection("friends").doc(receverid).collection("msgs").add(data)
       .then(
         res => resolve(res),
         err => reject(err)
       );
 
-  this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").add(msg)
+  this.afs.collection('chats').doc(receverid).collection("friends").doc(currentUser).collection("msgs").add(data)
       .then(
         res => resolve(res),
         err => reject(err)
