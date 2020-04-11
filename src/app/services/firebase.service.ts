@@ -217,11 +217,14 @@ getChats(receverid) {
 
   }
   addChat(msg , receverid){
-   let currentUser = firebase.auth().currentUser.uid;
+  
+
+return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser.uid;
     let data = {
       msg: msg,
       sender: currentUser,
-      createdat: this.firebaseService.getTimeSamp()
+      createdat: this.getTimeSamp()
     }
 
  
@@ -236,6 +239,9 @@ getChats(receverid) {
         res => resolve(res),
         err => reject(err)
       );
+
+
+});
 
    
 
