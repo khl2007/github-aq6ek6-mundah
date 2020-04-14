@@ -24,6 +24,8 @@ export class FirebaseService {
 
   blogsRef: AngularFirestoreCollection<Blogitem>;
   chatref: AngularFirestoreCollection<any>;
+  userfriends: Observable<any[]>;
+  chatfriref : AngularFirestoreCollection<any>;
 
   userchats: Observable<any[]>;
 
@@ -170,6 +172,46 @@ export class FirebaseService {
     this.userchats = this.chatref.valueChanges();
     return this.userchats;
   }
+
+getChatsFri(receverid) {
+    //get the loged in user id
+    let currentUser = firebase.auth().currentUser.uid;
+    //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
+    let chats: any;
+    //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
+    this.chatfriref = this.afs
+      .collection("chats")
+      .doc(currentUser)
+      .collection("friends");
+    this.userfriends = this.chatfriref.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(c => {
+          // this.lastVisible = c[0].payload.doc;
+          const data = c.payload.doc.data();
+          const userid = c.payload.doc.id;
+
+          return this.afs
+            .doc("users/" + userid)
+            .valueChanges()
+            .pipe(
+              map((userData: User) => {
+                return Object.assign({
+                  fuserid: userid,
+                  user: userData.displayName,
+                  useravtar: userData.avatar
+                 
+                });
+              })
+            );
+        });
+      }),
+      flatMap(feeds => combineLatest(feeds))
+    );
+    this.userfriends = this.chatref.valueChanges();
+    return this.userfriends;
+  }
+
+
   
   addChat(msg, receverid) {
     return new Promise<any>((resolve, reject) => {
