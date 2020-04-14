@@ -210,7 +210,7 @@ getChatsFri(receverid) {
       }),
       flatMap(feeds => combineLatest(feeds))
     );
-    this.userfriends = this.chatref.valueChanges();
+
     return this.userfriends;
   }
 
