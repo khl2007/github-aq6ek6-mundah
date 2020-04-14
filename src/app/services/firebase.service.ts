@@ -176,7 +176,7 @@ export class FirebaseService {
     return this.userchats;
   }
 
-getChatsFri(receverid) {
+getChatsFri() {
     //get the loged in user id
     let currentUser = firebase.auth().currentUser.uid;
     //this.afs.collection("people").doc(currentUser.uid).collection("tasks").snapshotChanges();
