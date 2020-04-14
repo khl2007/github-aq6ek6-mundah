@@ -211,10 +211,15 @@ getChatsFri() {
       flatMap(feeds => combineLatest(feeds))
     );
 
-    return this.userfriends;
+   
   }
 
+InitChatfri(){
+this.getChatsFri();
 
+return this.userfriends;
+
+}
   
   addChat(msg, receverid) {
     return new Promise<any>((resolve, reject) => {
