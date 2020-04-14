@@ -23,7 +23,7 @@ import { User } from "../services/user";
 })
 export class ChatsPage implements OnInit {
 
-chats: any;
+friends: any;
 
   constructor(public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -34,9 +34,9 @@ chats: any;
 
   ngOnInit() {
 
-    this.firebaseService.getChats().subscribe(res => {
+    this.firebaseService.getChatsFri().subscribe(res => {
       console.log(res);
-    this.chats = res;
+    this.friends= res;
     }); 
   }
 
