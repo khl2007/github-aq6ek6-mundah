@@ -10,7 +10,10 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable, combineLatest } from "rxjs";
 import { Blogitem } from "./blogitem";
 
+import { Userfriends } from "./userfriends";
+
 import { Feed } from "./postfeed";
+
 
 import { flatMap, map } from "rxjs/operators";
 
@@ -24,7 +27,7 @@ export class FirebaseService {
 
   blogsRef: AngularFirestoreCollection<Blogitem>;
   chatref: AngularFirestoreCollection<any>;
-  userfriends: Observable<any[]>;
+  userfriends: Observable<Userfriends[]>;
   chatfriref : AngularFirestoreCollection<any>;
 
   userchats: Observable<any[]>;
