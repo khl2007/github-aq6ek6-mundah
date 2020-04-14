@@ -34,7 +34,7 @@ friends: any;
 
   ngOnInit() {
 
-    this.firebaseService.getChatsFri().subscribe(res => {
+    this.firebaseService.InitChatfri().subscribe(res => {
       console.log(res);
     this.friends= res;
     }); 
