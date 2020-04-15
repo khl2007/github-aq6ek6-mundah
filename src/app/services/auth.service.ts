@@ -3,6 +3,8 @@ import * as firebase from 'firebase/app';
 import { FirebaseService } from './firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+import { Observable, combineLatest } from "rxjs";
+
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
