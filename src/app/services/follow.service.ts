@@ -9,7 +9,7 @@ import "firebase/storage";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable, combineLatest } from "rxjs";
 
-import { AuthService } from "./services/auth.service";
+import { AuthService } from "./auth.service";
 import { flatMap, map } from "rxjs/operators";
 import { User } from "./user";
 
