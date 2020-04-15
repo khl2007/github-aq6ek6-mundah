@@ -15,6 +15,7 @@ import { FirebaseService } from "../services/firebase.service";
 import { Blogitem } from "../services/blogitem";
 
 import { User } from "../services/user";
+import { userfriends } from "../services/user";
 
 @Component({
   selector: 'app-chats',
@@ -30,15 +31,20 @@ friends: any;
     private router: Router,
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private animationCtrl: AnimationController) { }
+    private animationCtrl: AnimationController) {
+ this.initUsers();
+     }
 
   ngOnInit() {
 
-    this.firebaseService.InitChatfri().subscribe(res => {
-      console.log(res);
+   
+  }
+ initUsers(){
+ this.firebaseService.InitChatfri().subscribe(res => {
+      console.log('hi',res);
     this.friends= res;
     }); 
-  }
 
+ }
  
 }

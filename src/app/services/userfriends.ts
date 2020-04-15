@@ -1,5 +1,5 @@
 export interface Userfriends {
-  fuserid?: string,;
+  fuserid?: string;
   user?: string;
   useravtar?: string;
 }

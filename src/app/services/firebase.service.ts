@@ -186,13 +186,13 @@ getChatsFri() {
       .collection("chats")
       .doc(currentUser)
       .collection("friends");
-    this.userfriends = this.chatfriref.snapshotChanges().pipe(
+    this.userfriends  = this.chatfriref.snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => {
           // this.lastVisible = c[0].payload.doc;
           const data = c.payload.doc.data();
           const userid = c.payload.doc.id;
-
+          console.log('hi',data);
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -208,7 +208,7 @@ getChatsFri() {
             );
         });
       }),
-      flatMap(feeds => combineLatest(feeds))
+      flatMap(userfeeds => combineLatest(userfeeds))
     );
 
    
@@ -218,6 +218,7 @@ InitChatfri(){
 this.getChatsFri();
 
 return this.userfriends;
+
 
 }
   
