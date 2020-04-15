@@ -8,15 +8,9 @@ import * as firebase from "firebase/app";
 import "firebase/storage";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable, combineLatest } from "rxjs";
-import { Blogitem } from "./blogitem";
 
-import { Userfriends } from "./userfriends";
-
-import { Feed } from "./postfeed";
-
-
+import { AuthService } from "./services/auth.service";
 import { flatMap, map } from "rxjs/operators";
-
 import { User } from "./user";
 
 
