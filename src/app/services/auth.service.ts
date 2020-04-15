@@ -10,11 +10,21 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AuthService {
 
+private authState: Observable<firebase.User>;
+
   constructor(
     private firebaseService: FirebaseService,
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore
-  ){}
+  ){
+
+this.authState = this.afAuth.authState;
+
+}
+
+getAuthState() {
+    return this.afAuth.authState;
+  }
 
   doRegister(value){
    return new Promise<any>((resolve, reject) => {
