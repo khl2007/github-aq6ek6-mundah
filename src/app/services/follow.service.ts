@@ -15,7 +15,9 @@ import { User } from "./user";
 
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FollowService {
 
   constructor(
