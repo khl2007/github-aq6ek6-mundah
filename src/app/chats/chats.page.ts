@@ -15,7 +15,7 @@ import { FirebaseService } from "../services/firebase.service";
 import { Blogitem } from "../services/blogitem";
 
 import { User } from "../services/user";
-import { userfriends } from "../services/user";
+import { Userfriends } from "../services/userfriends";
 
 @Component({
   selector: 'app-chats',

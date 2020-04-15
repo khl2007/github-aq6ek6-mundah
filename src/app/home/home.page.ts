@@ -63,23 +63,7 @@ items: Array<any>;
 
   }
 
-infinitload(event){
 
-setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
-
-this.firebaseService.loadnextvals();
-
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-     /* if (data.length == 1000) {
-        event.target.disabled = true;
-      }*/
-    }, 500);
-
-
-}
 
   async getData() {
     const loading = await this.loadingCtrl.create({
@@ -97,19 +81,7 @@ this.firebaseService.loadnextvals();
    // this.crtuser = this.firebaseService.getUserInfo().valueChanges();
   }
 
-  getCrtusertestt() {
-    this.firebaseService.getUserInfoo().subscribe(resdata => {
-      let data = resdata["data"];
-     
-    });
-
-    /*this.crtuser.subscribe(data => {
-      this.someuser = data;
-      console.log("thetestuserservice: ", this.someuser.email);
-      console.log("data: ", data);
-    });*/
-   // console.log("thetestuserservice: ", this.someuser);
-  }
+  
 
   getBlogs() {
     this.firebaseService

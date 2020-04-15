@@ -28,6 +28,7 @@ export class FirebaseService {
   blogsRef: AngularFirestoreCollection<Blogitem>;
   chatref: AngularFirestoreCollection<any>;
   userfriends: Observable<Userfriends[]>;
+   userfriendss: Observable<any[]>;
   chatfriref : AngularFirestoreCollection<any>;
 
   userchats: Observable<any[]>;
@@ -184,7 +185,7 @@ getChatsFri() {
     //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
     this.chatfriref = this.afs
       .collection("chats")
-      .doc(currentUser)
+      .doc('1LLPBFuJqxRq9FiFDpnmrECqbfB2')
       .collection("friends");
     this.userfriends  = this.chatfriref.snapshotChanges().pipe(
       map(changes => {
@@ -192,7 +193,7 @@ getChatsFri() {
           // this.lastVisible = c[0].payload.doc;
           const data = c.payload.doc.data();
           const userid = c.payload.doc.id;
-          console.log('hi',data);
+          console.log('hi',userid);
           return this.afs
             .doc("users/" + userid)
             .valueChanges()
@@ -213,7 +214,26 @@ getChatsFri() {
 
    
   }
-
+getChatsFrit() {
+    //get the loged in user id
+    let currentUser = firebase.auth().currentUser.uid;
+    let chats: any;
+    //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
+    this.chatfriref = this.afs
+      .collection("chats")
+      .doc('1LLPBFuJqxRq9FiFDpnmrECqbfB2')
+      .collection("friends");
+    this.userfriendss  = this.chatfriref.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(c => ({
+            key: c.payload.doc.id,
+            ...c.payload.doc.data()
+          }));
+        })
+      );;
+return this.userfriendss;
+   
+  }
 InitChatfri(){
 this.getChatsFri();
 
@@ -230,6 +250,12 @@ return this.userfriends;
         sender: currentUser,
         createdat: this.getTimeSamp()
       };
+      let cur = {
+        frid: currentUser
+      };
+       let rec = {
+        frid: receverid
+      };
 
       this.afs
         .collection("chats")
@@ -242,11 +268,27 @@ return this.userfriends;
 
       this.afs
         .collection("chats")
+        .doc(currentUser)
+        .collection("friends")
+        .doc(receverid)
+        .set(rec)
+        .then(res => resolve(res), err => reject(err)); 
+
+      this.afs
+        .collection("chats")
         .doc(receverid)
         .collection("friends")
         .doc(currentUser)
         .collection("msgs")
         .add(data)
+        .then(res => resolve(res), err => reject(err));
+
+        this.afs
+        .collection("chats")
+        .doc(receverid)
+        .collection("friends")
+        .doc(currentUser)
+        .set(cur)
         .then(res => resolve(res), err => reject(err));
     });
   }
