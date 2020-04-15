@@ -36,7 +36,7 @@ public like_btn = {
   public tap: number = 0;
 
 
-  constructor(private route: ActivatedRoute,private router: Router ,private followserv: FollowService, private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
+  constructor( public loadingCtrl: LoadingController,private route: ActivatedRoute,private router: Router ,private followserv: FollowService, private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
 
     
   }
