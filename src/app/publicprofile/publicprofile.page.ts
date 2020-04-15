@@ -78,7 +78,7 @@ console.log(this.userData);
    }
 
 follow(profileuid){
-this..follow(profileuid);
+this.followserv.follow(profileuid);
 
 
 
