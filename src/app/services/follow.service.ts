@@ -23,7 +23,7 @@ export class FollowService {
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
-    private userservice: UserService,
+    
   ) { }
 
   isFollowing(profileuid, currentuid) {
