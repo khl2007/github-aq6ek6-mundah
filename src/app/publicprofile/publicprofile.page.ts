@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { Blogitem } from "../services/blogitem";
 
 import { User } from "../services/user";
@@ -33,14 +34,22 @@ public like_btn = {
   public tap: number = 0;
 
 
-  constructor(private route: ActivatedRoute,private router: Router , private firebaseService: FirebaseService) { }
+  constructor(private route: ActivatedRoute,private router: Router , private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
+
+    
+  }
 
   ngOnInit() {
+    const curentuserid = this.firebaseService.getUserId();
 if(this.route.snapshot.params['buserid']){
 
 this.userid = this.route.snapshot.params['buserid'];
-
-console.log(this.userid);
+ if(this.userid === curentuserid){
+          this.router.navigate(["/myprofile"]);
+        } else {
+          //this.router.navigate(["/login"]);
+        }
+//console.log(this.userid);
 this.getuserdata(this.userid);
 
 this.getBlogPosts(this.userid);
