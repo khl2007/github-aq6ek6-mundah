@@ -28,7 +28,7 @@ export class FirebaseService {
   blogsRef: AngularFirestoreCollection<Blogitem>;
   chatref: AngularFirestoreCollection<any>;
   userfriends: Observable<Userfriends[]>;
-   userfriendss: Observable<any[]>;
+   
   chatfriref : AngularFirestoreCollection<any>;
 
   userchats: Observable<any[]>;
@@ -185,7 +185,7 @@ getChatsFri() {
     //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
     this.chatfriref = this.afs
       .collection("chats")
-      .doc('1LLPBFuJqxRq9FiFDpnmrECqbfB2')
+      .doc(currentUser)
       .collection("friends");
     this.userfriends  = this.chatfriref.snapshotChanges().pipe(
       map(changes => {
@@ -193,6 +193,7 @@ getChatsFri() {
           // this.lastVisible = c[0].payload.doc;
           const data = c.payload.doc.data();
           const userid = c.payload.doc.id;
+          const lastmsgg = data.lastmsg;
           console.log('hi',userid);
           return this.afs
             .doc("users/" + userid)
@@ -202,8 +203,8 @@ getChatsFri() {
                 return Object.assign({
                   fuserid: userid,
                   user: userData.displayName,
-                  useravtar: userData.avatar
-                 
+                  useravtar: userData.avatar,
+                  lastmsg : lastmsgg
                 });
               })
             );
@@ -214,26 +215,7 @@ getChatsFri() {
 
    
   }
-getChatsFrit() {
-    //get the loged in user id
-    let currentUser = firebase.auth().currentUser.uid;
-    let chats: any;
-    //let receverid = "qjrcTo4JIXX9j8X7541rSBlowu73";
-    this.chatfriref = this.afs
-      .collection("chats")
-      .doc('1LLPBFuJqxRq9FiFDpnmrECqbfB2')
-      .collection("friends");
-    this.userfriendss  = this.chatfriref.snapshotChanges().pipe(
-        map(actions => {
-          return actions.map(c => ({
-            key: c.payload.doc.id,
-            ...c.payload.doc.data()
-          }));
-        })
-      );;
-return this.userfriendss;
-   
-  }
+
 InitChatfri(){
 this.getChatsFri();
 
@@ -251,10 +233,12 @@ return this.userfriends;
         createdat: this.getTimeSamp()
       };
       let cur = {
-        frid: currentUser
+        frid: currentUser,
+        lastmsg : msg
       };
        let rec = {
-        frid: receverid
+        frid: receverid,
+        lastmsg : msg
       };
 
       this.afs

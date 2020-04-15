@@ -9,5 +9,18 @@
   {{userfr.user}}
 
 	</h2>
+<ion-list *ngFor="let userfr of friends ">
+  <ion-item>
+          <ion-avatar slot="start">
+            <img [src]=userfr.useravtar>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{userfr.user}}</h2>
+            
+            <p>{{userfr.lastmsg}}</p>
+          </ion-label>
+        </ion-item>
 
+ 
+</ion-list>
 </ion-content>
