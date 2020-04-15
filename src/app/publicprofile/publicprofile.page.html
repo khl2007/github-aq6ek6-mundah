@@ -33,7 +33,7 @@
           </h6>
         </div>
 
-        <ion-button color="primary">Followe</ion-button>
+        <ion-button (click)="follow(userid)" color="primary">Followe</ion-button>
 
 <ion-button color="primary" [routerLink]="['/chats/chat', userid]">Message </ion-button>
 
