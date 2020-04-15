@@ -10,6 +10,8 @@ import { User } from "../services/user";
 import { flatMap, map } from "rxjs/operators";
 
 import { FirebaseService } from '../services/firebase.service';
+
+import { FollowService } from '../services/follow.service';
 import { AuthService } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -34,7 +36,7 @@ public like_btn = {
   public tap: number = 0;
 
 
-  constructor(private route: ActivatedRoute,private router: Router , private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
+  constructor(private route: ActivatedRoute,private router: Router ,private followserv: FollowService, private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
 
     
   }
@@ -74,6 +76,13 @@ this.firebaseService.getUserInfo(userid).subscribe(
 console.log(this.userData);
 
    }
+
+follow(profileuid){
+this..follow(profileuid);
+
+
+
+}
 
 getBlogPosts(userid) {
 
