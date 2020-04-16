@@ -112,7 +112,7 @@ items: Array<any>;
     }
   }
 
-getLikes(pid) {
+/*getLikes(pid) {
     this.likeService.getLikes(pid).subscribe(likes => {
       this.likes = likes;
       this.likeLen = likes.length;
@@ -129,7 +129,7 @@ getLikes(pid) {
           }
         });
     });
-  }
+  }*/
 
   tapPhotoLike(times) {
     // If we click double times, it will trigger like the post
