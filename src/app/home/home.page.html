@@ -18,7 +18,7 @@
 	</div>
 
 	<ion-card *ngFor="let blog of postfeed " >
-		<ion-item>
+		<ion-item color="secondary">
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
 				<img [src]="blog.useravtar">
         </ion-avatar>
@@ -29,7 +29,7 @@
 		<ion-img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)"></ion-img>
 
 
-		<ion-item>
+		<ion-item color="secondary">
 			<ion-button fill="clear" clear ion-button icon-only (click)="likeButton()" class="like-btn">
 				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
 				</ion-icon>
@@ -45,7 +45,7 @@
 			</ion-button>
 		</ion-item>
 
-		<ion-card-content>
+		<ion-card-content >
 			<p class="like-content">
 				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
 			</p>
