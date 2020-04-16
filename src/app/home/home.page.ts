@@ -112,6 +112,25 @@ items: Array<any>;
     }
   }
 
+getLikes(pid) {
+    this.likeService.getLikes(pid).subscribe(likes => {
+      this.likes = likes;
+      this.likeLen = likes.length;
+      this.auth.getAuthState().subscribe(
+        user => {
+          if (user) {
+            this.currentuser = user;
+            this.likes.forEach(like => {
+              if (like.uid === user.uid) {
+                this.isLiked = true;
+                this.likeStyle = 'fa fa-thumbs-up post-liked';
+              }
+            });
+          }
+        });
+    });
+  }
+
   tapPhotoLike(times) {
     // If we click double times, it will trigger like the post
     this.tap++;
