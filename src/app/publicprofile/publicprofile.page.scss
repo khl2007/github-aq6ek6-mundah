@@ -1,5 +1,10 @@
 ion-content {
-    
+    ion-content {
+    --background:none;
+    background:url('../../assets/images/cover.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
    
 
     ion-button {
