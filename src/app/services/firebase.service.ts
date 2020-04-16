@@ -337,6 +337,28 @@ return this.userfriends;
     });
   }
 
+getLikes(pid) {
+    return this.afs.collection('blogs/' + pid + '/likesc').valueChanges();
+  }
+
+  getUserLikes(uid) {
+    return this.afs.collection('users/' + uid + '/likes', ref => ref.orderBy('date', 'desc')).valueChanges();
+  }
+
+  addLike(pid, uid) {
+    const data = {
+      uid: uid
+    };
+    this.afs.doc('blogs/' + pid + '/likesc/' + uid).set(data)
+    .then(() => console.log('post ', pid, ' liked by user ', uid));
+  }
+
+  removeLike(pid, uid) {
+    this.afs.doc('blogs/' + pid + '/likesc/' + uid).delete()
+    .then(() => console.log('post ', pid, ' unliked by user ', uid));
+  }
+
+
   encodeImageUri(imageUri, callback) {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
