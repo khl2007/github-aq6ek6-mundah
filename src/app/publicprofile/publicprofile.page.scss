@@ -1,10 +1,10 @@
 ion-content {
-    ion-content {
-    --background: url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/3B6B45E5-947C-48C1-ABBC-0C202245669A.jpeg?alt=media&token=be9c57f7-039f-4a6f-8bd1-fe36d34bcc30');
-    background:url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/3B6B45E5-947C-48C1-ABBC-0C202245669A.jpeg?alt=media&token=be9c57f7-039f-4a6f-8bd1-fe36d34bcc30');
+    
+    --background: url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/3B6B45E5-947C-48C1-ABBC-0C202245669A.jpeg?alt=media&token=be9c57f7-039f-4a6f-8bd1-fe36d34bcc30') no-repeat center center / cover; 
+    background:url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/3B6B45E5-947C-48C1-ABBC-0C202245669A.jpeg?alt=media&token=be9c57f7-039f-4a6f-8bd1-fe36d34bcc30') no-repeat center center / cover;
     background-size: cover;
     background-position: center center;
-  }
+  
    
 
     ion-button {
@@ -47,7 +47,7 @@ ion-chip {
 }
 
 .card-body {
-    background-color: #ffffff;
+    
     padding: 30px;
    
     overflow: hidden;
