@@ -12,9 +12,11 @@ ion-content {
     }
     ion-label{
     
-
+     margin: 1em;
     }
-    
+    .ion-butt-font{
+      --color:#fff;
+    }
 }
 
 ion-toolbar {
