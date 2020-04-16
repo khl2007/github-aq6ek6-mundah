@@ -1,100 +1,92 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import { Observable } from "rxjs";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { auth } from "firebase/app";
 import { Blogitem } from "../services/blogitem";
-
+import { ScrollDetail } from '@ionic/angular';
 import { User } from "../services/user";
 
 import { flatMap, map } from "rxjs/operators";
 
-import { FirebaseService } from '../services/firebase.service';
+import { FirebaseService } from "../services/firebase.service";
 
-import { FollowService } from '../services/follow.service';
-import { AuthService } from '../services/auth.service';
-import { LoadingController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { FollowService } from "../services/follow.service";
+import { AuthService } from "../services/auth.service";
+import { LoadingController } from "@ionic/angular";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-publicprofile',
-  templateUrl: './publicprofile.page.html',
-  styleUrls: ['./publicprofile.page.scss'],
+  selector: "app-publicprofile",
+  templateUrl: "./publicprofile.page.html",
+  styleUrls: ["./publicprofile.page.scss"]
 })
 export class PublicprofilePage implements OnInit {
-userid : string;
+  userid: string;
+  showToolbar = false;
+  userData: User = new User();
 
-userData: User = new User();
-
-postfeed: any;
-ismyprofile = false;
-public like_btn = {
+  postfeed: any;
+  ismyprofile = false;
+  public like_btn = {
     color: "black",
     icon_name: "heart-outline"
   };
 
   public tap: number = 0;
 
-
-  constructor( public loadingCtrl: LoadingController,private route: ActivatedRoute,private router: Router ,private followserv: FollowService, private firebaseService: FirebaseService, public afAuth: AngularFireAuth) { 
-
-    
-  }
+  constructor(
+    public loadingCtrl: LoadingController,
+    private route: ActivatedRoute,
+    private router: Router,
+    private followserv: FollowService,
+    private firebaseService: FirebaseService,
+    public afAuth: AngularFireAuth
+  ) {}
 
   ngOnInit() {
     const curentuserid = this.firebaseService.getUserId();
-if(this.route.snapshot.params['buserid']){
+    if (this.route.snapshot.params["buserid"]) {
+      this.userid = this.route.snapshot.params["buserid"];
+      if (this.userid === curentuserid) {
+        this.ismyprofile = true;
+      } else {
+        //this.router.navigate(["/login"]);
+      }
+      //console.log(this.userid);
+      this.getuserdata(this.userid);
 
-this.userid = this.route.snapshot.params['buserid'];
- if(this.userid === curentuserid){
-    this.ismyprofile=true;
-          
-        } else {
-          //this.router.navigate(["/login"]);
-        }
-//console.log(this.userid);
-this.getuserdata(this.userid);
+      this.getBlogPosts(this.userid);
+    } else {
+    }
 
-this.getBlogPosts(this.userid);
-
-} else {
-
+    //getUserInfo
+  }
+  onScroll($event) {
+if ($event && $event.detail && $event.detail.scrollTop) {
+const scrollTop = $event.detail.scrollTop;
+this.showToolbar = scrollTop >= 225;
 }
+} 
 
-    
+  getuserdata(userid) {
+    this.firebaseService.getUserInfo(userid).subscribe((result: User) => {
+      this.userData = result;
+    });
 
-//getUserInfo
-
+    console.log(this.userData);
   }
 
-   getuserdata(userid){
+  follow(profileuid) {
+    this.followserv.follow(profileuid);
+  }
 
-
-this.firebaseService.getUserInfo(userid).subscribe(
-        (result: User) => {
-          this.userData = result;
-        }
-      );
-
-console.log(this.userData);
-
-   }
-
-follow(profileuid){
-this.followserv.follow(profileuid);
-
-
-
-}
-
-getBlogPosts(userid) {
-
-this.firebaseService.sellectUserNews(userid).subscribe(res => {
-   console.log(res);
-   this.postfeed = res;
-});
-//console.log(this.blogPost);
-
+  getBlogPosts(userid) {
+    this.firebaseService.sellectUserNews(userid).subscribe(res => {
+      console.log(res);
+      this.postfeed = res;
+    });
+    //console.log(this.blogPost);
   }
 
   likeButton() {
@@ -131,5 +123,4 @@ this.firebaseService.sellectUserNews(userid).subscribe(res => {
   scrollToTop() {
     //this.content.scrollToTop();
   }
-
 }

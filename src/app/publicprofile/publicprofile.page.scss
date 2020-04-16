@@ -1,7 +1,7 @@
 ion-content {
     
     --background: url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/A1236B9A-A5A1-4827-B7FC-355FB0364CC0.jpeg?alt=media&token=ad11769a-49d3-4bb0-b03e-29280e4e9adf') no-repeat center center / cover; 
-    background:url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/3B6B45E5-947C-48C1-ABBC-0C202245669A.jpeg?alt=media&token=be9c57f7-039f-4a6f-8bd1-fe36d34bcc30') no-repeat center center / cover;
+    background:url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/A1236B9A-A5A1-4827-B7FC-355FB0364CC0.jpeg?alt=media&token=ad11769a-49d3-4bb0-b03e-29280e4e9adf') no-repeat center center / cover;
     background-size: cover;
     background-position: center center;
   
@@ -15,6 +15,16 @@ ion-content {
 
 ion-toolbar {
     --background: transparent;
+--ion-color-base: transparent !important;
+   
+    .toolbar-background{
+       --background: translucent;
+
+    }
+    .toolbar-containerd{
+       --background: translucent;
+
+    }
 }
 
 ion-chip {
@@ -58,12 +68,12 @@ ion-chip {
         .playername {
             font-size: 24px;
             font-weight: 600;
-            color: #303940;
+            color: #FFF;
         }
 
         .country {
             font-size: 90%;
-            color: #949ea6;
+            color: #FFF;
             text-transform: uppercase;
             margin: 0 auto;
         }
