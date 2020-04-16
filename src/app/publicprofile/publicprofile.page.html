@@ -1,4 +1,14 @@
-
+<ion-toolbar>
+  	<ion-buttons slot="start">
+  <ion-back-button defaultHref="home"></ion-back-button>
+  	</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button [routerLink]="['/new-task']">
+				<ion-icon name="settings"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		
+	</ion-toolbar>
 
 <ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
 
@@ -17,20 +27,16 @@
         <div class="user-meta ion-text-center">
           <h3 class="playername"> {{userData.displayName}} </h3>
           <h5 class="country">  {{userData.email}}  </h5>
-          <h6 class="ranking"> 
-            <ion-chip>
-              <ion-label>2</ion-label>
-            </ion-chip>
-          </h6>
+          
         </div>
-
+<ion-button expand="block" *ngIf="!ismyprofile" color="primary" [routerLink]="['/chats/chat', userid]">Message </ion-button>
         <ion-button *ngIf="!ismyprofile" (click)="follow(userid)" color="primary">Followe</ion-button>
 
-<ion-button *ngIf="!ismyprofile" color="primary" [routerLink]="['/chats/chat', userid]">Message </ion-button>
+
 
       </div>
     </div>
-
+  <div class="ion-cont-bg">
 	<ion-card *ngFor="let blog of postfeed " >
 		<ion-item>
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
@@ -70,5 +76,5 @@
 			</ion-note>
 		</ion-card-content>
 	</ion-card>
-
+  </div>
 </ion-content>
