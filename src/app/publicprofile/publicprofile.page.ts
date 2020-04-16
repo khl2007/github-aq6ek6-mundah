@@ -27,7 +27,7 @@ userid : string;
 userData: User = new User();
 
 postfeed: any;
-
+ismyprofile = false;
 public like_btn = {
     color: "black",
     icon_name: "heart-outline"
@@ -47,7 +47,8 @@ if(this.route.snapshot.params['buserid']){
 
 this.userid = this.route.snapshot.params['buserid'];
  if(this.userid === curentuserid){
-          this.router.navigate(["/myprofile"]);
+    this.ismyprofile=true;
+          
         } else {
           //this.router.navigate(["/login"]);
         }
@@ -55,6 +56,8 @@ this.userid = this.route.snapshot.params['buserid'];
 this.getuserdata(this.userid);
 
 this.getBlogPosts(this.userid);
+
+} else {
 
 }
 

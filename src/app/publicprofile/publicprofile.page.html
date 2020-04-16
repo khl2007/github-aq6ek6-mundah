@@ -33,9 +33,9 @@
           </h6>
         </div>
 
-        <ion-button (click)="follow(userid)" color="primary">Followe</ion-button>
+        <ion-button *ngIf="!ismyprofile" (click)="follow(userid)" color="primary">Followe</ion-button>
 
-<ion-button color="primary" [routerLink]="['/chats/chat', userid]">Message </ion-button>
+<ion-button *ngIf="!ismyprofile" color="primary" [routerLink]="['/chats/chat', userid]">Message </ion-button>
 
       </div>
     </div>
