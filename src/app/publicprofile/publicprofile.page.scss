@@ -1,6 +1,6 @@
 ion-content {
     
-    --background: url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/A1236B9A-A5A1-4827-B7FC-355FB0364CC0.jpeg?alt=media&token=ad11769a-49d3-4bb0-b03e-29280e4e9adf') no-repeat center center / cover; 
+    --background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.)) , url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/A1236B9A-A5A1-4827-B7FC-355FB0364CC0.jpeg?alt=media&token=ad11769a-49d3-4bb0-b03e-29280e4e9adf') no-repeat center center / cover; 
     background-image: rgb(0,0,0) , linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(19,19,32,0.7377049180327868) 100%) ,url('https://firebasestorage.googleapis.com/v0/b/khlstacksocial.appspot.com/o/A1236B9A-A5A1-4827-B7FC-355FB0364CC0.jpeg?alt=media&token=ad11769a-49d3-4bb0-b03e-29280e4e9adf') no-repeat center center / cover;
     background-size: cover;
     background-position: center center;
