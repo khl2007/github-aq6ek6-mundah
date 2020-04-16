@@ -1,9 +1,9 @@
 <ion-toolbar>
   	<ion-buttons slot="start">
-  <ion-back-button defaultHref="home"></ion-back-button>
+  <ion-back-button color="secondary" fill="solid" defaultHref="home"></ion-back-button>
   	</ion-buttons>
 		<ion-buttons slot="end">
-			<ion-button [routerLink]="['/new-task']">
+			<ion-button color="secondary" fill="solid" [routerLink]="['/new-task']">
 				<ion-icon name="settings"></ion-icon>
 			</ion-button>
 		</ion-buttons>
@@ -37,8 +37,8 @@
       </div>
     </div>
   <div class="ion-cont-bg">
-	<ion-card *ngFor="let blog of postfeed " >
-		<ion-item>
+	<ion-card *ngFor="let blog of postfeed " color="secondary" >
+		<ion-item color="secondary">
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
 				<img [src]="blog.useravtar">
         </ion-avatar>
@@ -49,18 +49,18 @@
 		<img *ngIf="blog.bimgurl" [src]="blog.bimgurl" (tap)="tapPhotoLike($event)">
 
 
-		<ion-item>
-			<ion-button fill="outline" clear ion-button icon-only (click)="likeButton()" class="like-btn">
+		<ion-item color="secondary">
+			<ion-button fill="clear" clear ion-button icon-only (click)="likeButton()" class="like-btn">
 				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
 				</ion-icon>
 			</ion-button>
-			<ion-button fill="outline" ion-button icon-only>
-				<ion-icon name="chatbubble-outline"></ion-icon>
+			<ion-button fill="clear" ion-button icon-only>
+				<ion-icon name="chatbubble-outline" color="primary"></ion-icon>
 			</ion-button>
-			<ion-button fill="outline" ion-button icon-only>
-				<ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
+			<ion-button fill="clear" ion-button icon-only>
+				<ion-icon no-padding isActive="false" color="primary" name="paper-plane" class="icon-space"></ion-icon>
 			</ion-button>
-			<ion-button fill="outline" no-margin no-padding clear color="black" icon-only style="float: right">
+			<ion-button fill="clear" no-margin no-padding clear color="primary" icon-only style="float: right">
 				<ion-icon name="ios-bookmark-outline"></ion-icon>
 			</ion-button>
 		</ion-item>

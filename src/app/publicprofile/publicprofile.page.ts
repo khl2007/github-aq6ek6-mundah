@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from "firebase/app";
 import { Blogitem } from "../services/blogitem";
-import { ScrollDetail } from '@ionic/angular';
+
 import { User } from "../services/user";
 
 import { flatMap, map } from "rxjs/operators";
@@ -29,7 +29,7 @@ export class PublicprofilePage implements OnInit {
   postfeed: any;
   ismyprofile = false;
   public like_btn = {
-    color: "black",
+    color: "primary",
     icon_name: "heart-outline"
   };
 
