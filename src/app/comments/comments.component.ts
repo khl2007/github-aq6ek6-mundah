@@ -13,6 +13,7 @@ export class CommentsComponent implements OnInit {
   @Input() lastName: string;
   @Input() middleInitial: string;
 
+comment : any;
 
   constructor(public moCtrl: ModalController,) { }
 
