@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit , Input} from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { FirebaseService } from "../services/firebase.service";
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -13,14 +14,14 @@ export class CommentsComponent implements OnInit {
   @Input() middleInitial: string;
 
 
-  constructor() { }
+  constructor(public moCtrl: ModalController,) { }
 
   ngOnInit() {}
 
  dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
-    this.modalCtrl.dismiss({
+    this.moCtrl.dismiss({
       'dismissed': true
     });
   }

@@ -4,6 +4,7 @@ import { LoadingController } from "@ionic/angular";
 import { Router, ActivatedRoute } from "@angular/router";
 
 import { ModalController } from '@ionic/angular';
+import { CommentsComponent } from '../comments/comments.component';
 
 //import { Animation, AnimationController } from '@ionic/angular';
 
@@ -12,7 +13,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { Observable } from "rxjs";
 
 import { map } from "rxjs/operators";
-
+import { IonRouterOutlet } from '@ionic/angular';
 import { FirebaseService } from "../services/firebase.service";
 import { Blogitem } from "../services/blogitem";
 
@@ -45,7 +46,8 @@ items: Array<any>;
     private router: Router,
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    public moCtrl: ModalController
+    public moCtrl: ModalController,
+    private routerOutlet: IonRouterOutlet
   ) {
 
 
@@ -66,7 +68,7 @@ items: Array<any>;
   }
 
 async presentcommtsModal() {
-  const modal = await this.modalController.create({
+  const modal = await this.moCtrl.create({
     component: CommentsComponent,
     swipeToClose: true,
     presentingElement: this.routerOutlet.nativeEl

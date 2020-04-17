@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      	<ion-button fill="clear" clear ion-button icon-only (click)="dismiss()" class="like-btn">
+				dismiss
+			</ion-button> 
+    </ion-buttons>
+    <ion-title>Add a blog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-footer ion-fixed>    
+  <ion-toolbar class="no-border" color="white">        
+    <ion-input [(ngModel)]="comment" placeholder="Write your comment ..."></ion-input>  
+    <ion-buttons slot="end">
+      <button ion-button (click)="addmessage()">
+        <ion-icon name="send" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-footer>

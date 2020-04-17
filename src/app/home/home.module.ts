@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 import { HomeResolver } from './home.resolver';
 
-import { CommentsComponent } from './comments.component';
+import { CommentsComponent } from '../comments/comments.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  exports: [CommentsComponent],
   declarations: [HomePage , CommentsComponent],
+  entryComponents: [CommentsComponent],
   providers: [
     HomeResolver
   ]
