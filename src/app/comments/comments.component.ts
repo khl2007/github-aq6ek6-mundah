@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comments.component.scss'],
 })
 export class CommentsComponent implements OnInit {
+  
+
+  @Input() firstName: string;
+  @Input() lastName: string;
+  @Input() middleInitial: string;
+
 
   constructor() { }
 
