@@ -144,19 +144,7 @@ ion-content {
     }
 }
 
-ion-toolbar {
-    --background: transparent;
---ion-color-base: transparent !important;
-   
-    .toolbar-background{
-       --background: translucent;
 
-    }
-    .toolbar-containerd{
-       --background: translucent;
-
-    }
-}
 
 ion-chip {
     --background: #9dc912;
