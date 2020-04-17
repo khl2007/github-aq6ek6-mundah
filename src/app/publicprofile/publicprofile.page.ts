@@ -101,6 +101,12 @@ this.followserv.isFollowing(this.userid, this.curentuserid).subscribe(
                 }
             });
 
+if (this.isFollowing) {
+      return 'Following';
+    } else {
+      return 'Follow';
+    }
+
 }
 
   getBlogPosts(userid) {
