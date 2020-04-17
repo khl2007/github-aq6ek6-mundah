@@ -10,7 +10,7 @@ import { User } from "../services/user";
 import { flatMap, map } from "rxjs/operators";
 
 import { FirebaseService } from "../services/firebase.service";
-
+//import { Animation, AnimationController } from '@ionic/angular';
 import { FollowService } from "../services/follow.service";
 import { AuthService } from "../services/auth.service";
 import { LoadingController } from "@ionic/angular";
@@ -25,7 +25,7 @@ export class PublicprofilePage implements OnInit {
   userid: string;
   showToolbar = false;
   userData: User = new User();
-
+	isFollowing: boolean;
   postfeed: any;
   ismyprofile = false;
   public like_btn = {
@@ -48,17 +48,26 @@ export class PublicprofilePage implements OnInit {
     const curentuserid = this.firebaseService.getUserId();
     if (this.route.snapshot.params["buserid"]) {
       this.userid = this.route.snapshot.params["buserid"];
-      if (this.userid === curentuserid) {
-        this.ismyprofile = true;
-      } else {
-        //this.router.navigate(["/login"]);
-      }
-      //console.log(this.userid);
+			  if (this.userid === curentuserid) {
+				this.ismyprofile = true;
+				
+			  } else {
+				//this.router.navigate(["/login"]);
+			  }
+      console.log(this.followserv.isFollowing(this.userid,curentuserid));
+	  //this.isFollowing = this.followserv.isFollowing(this.userid,curentuserid);
+		
       this.getuserdata(this.userid);
 
       this.getBlogPosts(this.userid);
     } else {
-    }
+        //this.router.navigate(["/login"]);
+		this.userid = curentuserid;
+		 this.ismyprofile = true;
+		 this.getuserdata(this.userid);
+
+      this.getBlogPosts(this.userid);
+      }
 
     //getUserInfo
   }
