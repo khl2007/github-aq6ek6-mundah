@@ -30,7 +30,7 @@
           
         </div>
 <ion-button expand="block" *ngIf="!ismyprofile" color="primary" class="ion-butt-font" [routerLink]="['/chats/chat', userid]">Message </ion-button>
-        <ion-button *ngIf="!ismyprofile" (click)="follow(userid)" fill="clear" color="primary"><ion-icon name="add"></ion-icon>Followe</ion-button>
+        <ion-button *ngIf="!ismyprofile" (click)="follow(userid)" fill="clear" color="primary"><ion-icon name="add"></ion-icon>{{ checkFollowing() }}</ion-button>
 
 
 
