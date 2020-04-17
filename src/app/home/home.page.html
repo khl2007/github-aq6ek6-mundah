@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-toolbar>
+	<ion-toolbar color="primary">
 		<ion-buttons slot="end">
 			<ion-button [routerLink]="['/new-task']">
 				<ion-icon slot="icon-only" name="add"></ion-icon>
@@ -17,7 +17,7 @@
 
 	</div>
 
-	<ion-card *ngFor="let blog of postfeed " >
+	<ion-card *ngFor="let blog of postfeed " color="secondary">
 		<ion-item color="secondary">
 			<ion-avatar item-left [routerLink]="['/publicprofile', blog.buserid]" >
 				<img [src]="blog.useravtar">
@@ -34,18 +34,18 @@
 				<ion-icon no-padding [name]="like_btn.icon_name" color="{{ like_btn.color }}" class="icon-space">
 				</ion-icon>
 			</ion-button>
-			<ion-button fill="clear" ion-button icon-only>
+			<ion-button fill="clear" color="primary" ion-button icon-only>
 				<ion-icon name="chatbubble-outline"></ion-icon>
 			</ion-button>
-			<ion-button fill="clear" ion-button icon-only>
+			<ion-button fill="clear" color="primary" ion-button icon-only>
 				<ion-icon no-padding isActive="false" color="black" name="paper-plane" class="icon-space"></ion-icon>
 			</ion-button>
-			<ion-button fill="clear" no-margin no-padding clear color="black" icon-only style="float: right">
+			<ion-button fill="clear" color="primary" no-margin no-padding clear color="black" icon-only style="float: right">
 				<ion-icon name="bookmark-outline"></ion-icon>
 			</ion-button>
 		</ion-item>
 
-		<ion-card-content >
+		<ion-card-content color="secondary">
 			<p class="like-content">
 				<ion-icon name="heart"></ion-icon> {{blog.likes}} likes
 			</p>
@@ -80,7 +80,7 @@
 		</ion-item>
 	</ion-card>
 
-<ion-button fill="outline" clear ion-button icon-only (click)="infinitload()" class="like-btn">
+<ion-button fill="outline" clear ion-button icon-only (click)="infinitload()" class="like-btn" >
 		load more 		
 	</ion-button>			
 
@@ -88,8 +88,4 @@
 </ion-content>
 
 
-<ion-footer (click)="logout()">
-	<ion-toolbar color="medium">
-		<ion-title>Log out</ion-title>
-	</ion-toolbar>
-</ion-footer>
+
