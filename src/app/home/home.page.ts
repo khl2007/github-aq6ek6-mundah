@@ -65,14 +65,11 @@ items: Array<any>;
 
   }
 
-async presentModal() {
-  const modal = await this.moCtrl.create({
-    component: ModalPage,
-    componentProps: {
-      'firstName': 'Douglas',
-      'lastName': 'Adams',
-      'middleInitial': 'N'
-    }
+async presentcommtsModal() {
+  const modal = await this.modalController.create({
+    component: CommentsComponent,
+    swipeToClose: true,
+    presentingElement: this.routerOutlet.nativeEl
   });
   return await modal.present();
 }
