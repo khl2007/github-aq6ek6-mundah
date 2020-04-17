@@ -88,7 +88,12 @@ this.showToolbar = scrollTop >= 225;
   }
 
   follow(profileuid) {
-    this.followserv.follow(profileuid);
+  if (this.isFollowing) {
+      this.followserv.unfollow(profileuid);
+    } else {
+      this.followserv.follow(profileuid);
+    }
+    
   }
 
 checkFollowing(){
@@ -102,7 +107,7 @@ this.followserv.isFollowing(this.userid, this.curentuserid).subscribe(
             });
 
 if (this.isFollowing) {
-      return 'Following';
+      return 'Unfollow';
     } else {
       return 'Follow';
     }
