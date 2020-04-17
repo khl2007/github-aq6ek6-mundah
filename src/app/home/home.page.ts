@@ -3,6 +3,8 @@ import { AuthService } from "../services/auth.service";
 import { LoadingController } from "@ionic/angular"; 
 import { Router, ActivatedRoute } from "@angular/router";
 
+import { ModalController } from '@ionic/angular';
+
 //import { Animation, AnimationController } from '@ionic/angular';
 
 import { IonInfiniteScroll } from '@ionic/angular';
@@ -42,7 +44,8 @@ items: Array<any>;
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    public moCtrl: ModalController
   ) {
 
 
@@ -62,7 +65,12 @@ items: Array<any>;
 
   }
 
-
+async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage
+    });
+    return await modal.present();
+  }
 
   async getData() {
     const loading = await this.loadingCtrl.create({
