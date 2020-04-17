@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 import { HomeResolver } from './home.resolver';
 
+import { CommentsComponent } from './comments.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -26,7 +28,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage],
+  declarations: [HomePage , CommentsComponent],
   providers: [
     HomeResolver
   ]
