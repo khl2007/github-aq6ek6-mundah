@@ -3,7 +3,7 @@ import { AuthService } from "../services/auth.service";
 import { LoadingController } from "@ionic/angular"; 
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { Animation, AnimationController } from '@ionic/angular';
+//import { Animation, AnimationController } from '@ionic/angular';
 
 import { IonInfiniteScroll } from '@ionic/angular';
 
@@ -31,7 +31,7 @@ items: Array<any>;
   crtuser: Observable<User>;
   someuser: any;
   public like_btn = {
-    color: "black",
+    color: "secondary",
     icon_name: "heart-outline"
   };
 
@@ -42,8 +42,7 @@ items: Array<any>;
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private firebaseService: FirebaseService,
-    private animationCtrl: AnimationController
+    private firebaseService: FirebaseService
   ) {
 
 
