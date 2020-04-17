@@ -23,6 +23,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class PublicprofilePage implements OnInit {
   userid: string;
+  curentuserid: string;
   showToolbar = false;
   userData: User = new User();
 	isFollowing: boolean;
@@ -45,24 +46,24 @@ export class PublicprofilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const curentuserid = this.firebaseService.getUserId();
+    this.curentuserid = this.firebaseService.getUserId();
     if (this.route.snapshot.params["buserid"]) {
       this.userid = this.route.snapshot.params["buserid"];
-			  if (this.userid === curentuserid) {
+			  if (this.userid === this.curentuserid) {
 				this.ismyprofile = true;
 				
 			  } else {
 				//this.router.navigate(["/login"]);
 			  }
-      console.log(this.followserv.isFollowing(this.userid,curentuserid));
-	  //this.isFollowing = this.followserv.isFollowing(this.userid,curentuserid);
+      
+	 
 		
       this.getuserdata(this.userid);
 
       this.getBlogPosts(this.userid);
     } else {
         //this.router.navigate(["/login"]);
-		this.userid = curentuserid;
+		this.userid = this.curentuserid;
 		 this.ismyprofile = true;
 		 this.getuserdata(this.userid);
 
@@ -89,6 +90,18 @@ this.showToolbar = scrollTop >= 225;
   follow(profileuid) {
     this.followserv.follow(profileuid);
   }
+
+checkFollowing(){
+
+this.followserv.isFollowing(this.userid, this.curentuserid).subscribe(
+              followinguser => {
+                if (followinguser[0]) {
+                  this.isFollowing = true;
+                 
+                }
+            });
+
+}
 
   getBlogPosts(userid) {
     this.firebaseService.sellectUserNews(userid).subscribe(res => {
