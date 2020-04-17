@@ -15,6 +15,10 @@ export class CommentsComponent implements OnInit {
 
 comment : any;
 
+comments;
+
+commentLen = 0;
+
   constructor(public moCtrl: ModalController,) { }
 
   ngOnInit() {}
@@ -26,5 +30,16 @@ comment : any;
       'dismissed': true
     });
   }
+  
 
+getComments(pid) {
+    this.postService.getComments(pid).subscribe(comments => {
+      if (comments) {
+        this.commentLen = comments.length;
+        this.comments = comments;
+      }
+    });
+  }
+
+  
 }
