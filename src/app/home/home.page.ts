@@ -66,11 +66,17 @@ items: Array<any>;
   }
 
 async presentModal() {
-    const modal = await this.modalController.create({
-      component: ModalPage
-    });
-    return await modal.present();
-  }
+  const modal = await this.moCtrl.create({
+    component: ModalPage,
+    componentProps: {
+      'firstName': 'Douglas',
+      'lastName': 'Adams',
+      'middleInitial': 'N'
+    }
+  });
+  return await modal.present();
+}
+
 
   async getData() {
     const loading = await this.loadingCtrl.create({
