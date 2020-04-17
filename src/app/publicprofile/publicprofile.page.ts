@@ -25,6 +25,11 @@ export class PublicprofilePage implements OnInit {
   userid: string;
   curentuserid: string;
   showToolbar = false;
+  userFollowers;
+  userFollowing;
+  followers: any;
+  following: any;
+
   userData: User = new User();
 	isFollowing: boolean;
   postfeed: any;
@@ -61,6 +66,7 @@ export class PublicprofilePage implements OnInit {
       this.getuserdata(this.userid);
 
       this.getBlogPosts(this.userid);
+      this.getFollowData();
     } else {
         //this.router.navigate(["/login"]);
 		this.userid = this.curentuserid;
@@ -68,6 +74,7 @@ export class PublicprofilePage implements OnInit {
 		 this.getuserdata(this.userid);
 
       this.getBlogPosts(this.userid);
+       this.getFollowData();
       }
 
     //getUserInfo
@@ -94,6 +101,19 @@ this.showToolbar = scrollTop >= 225;
       this.followserv.follow(profileuid);
     }
     
+  }
+
+getFollowData() {
+    this.followserv.getFollowers(this.userid).subscribe(
+      followers => {
+        this.followers = followers;
+        this.userFollowers = followers;
+      });
+    this.followserv.getFollowing(this.userid).subscribe(
+      following => {
+        this.following = following;
+        this.userFollowing = following;
+      });
   }
 
 checkFollowing(){
